@@ -5,103 +5,135 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff'
-        
-
     },
 
     topContainer: {
-        backgroundColor: '#1E90FF',
         padding: 10,
+        paddingHorizontal: 20,
+        width: '100%',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
         alignItems: 'center',
+        backgroundColor: '#0D47A1',
+        elevation: 7,
+
     },
 
-    titleText: {
+    title: {
         fontSize: 25,
-        fontWeight: '700',
-        color: '#fff',
+        fontFamily: 'Roboto-Bold',
+        color: '#FFF',
+        marginLeft: 40,
+    },
+
+    cabecalhoContainer:{
+        padding: 10,
+        width: '100%',
+        
+        justifyContent: 'flex-start',
+        backgroundColor: '#0D47A1',
+        elevation: 7,
+
+    },
+
+    cabecalho:{
+        fontSize: 25,
+        fontFamily: 'Recursive-ExtraBold',
+        borderBottomColor: '#fff',
+        borderBottomWidth: 2,
+        color: '#FFF',
     },
 
     optionsContainer: {
-        backgroundColor: '#1E90FF',
-        height: 120,
-        borderBottomEndRadius: 70,
-        borderBottomStartRadius: 70,
+        backgroundColor: '#0D47A1',
+        height: 100,
+        borderBottomEndRadius: 10,
+        borderBottomStartRadius: 10,
         padding: 20,
-        marginBottom: 25,
         flexDirection: 'row',
         justifyContent: 'space-between',
+        shadowOffset:{
+            width: 0,
+            height: 60,
+        },
+        elevation: 7,
     },
 
     optionButtonContainer: {
-        backgroundColor: '#FFF',
+        backgroundColor: '#fff',
         borderRadius: 20,
-        height: 60,
-        width: 80,
+        padding: 7,
+        height: 45,
+        width: 100,
         alignItems: 'center',
         justifyContent: 'center',
-        elevation: 4,
+        elevation: 10,
 
     },
 
     topButton: {
+        padding: 2,
         alignItems: 'center',
         justifyContent: 'center'
     },
-
-    recomendadoButtom: {
-
-        borderRadius: 10,
-        elevation: 3,
-    },
-
+    
     conteudoContainer:{
         flex:1,
-        padding: 20,
+        padding: 5,
         alignItems: 'center',
     },
 
-    atrativosProximosContainer:{
-        flexDirection: 'row',
+    cabecalhoII:{
+  
+        fontSize: 25, 
+        fontFamily: 'Roboto-Bold',
+        width: '98%',
+        borderBottomWidth: 2,
+        borderColor: '#455A64',
+        marginTop: 30,
+        marginBottom: 15,
+        color: '#455A64'
+    },
+
+    atrativosContainer:{
         justifyContent: 'space-between',
-        height: 210,
+        padding: 5,
         marginBottom: 10,
 
     },
 
     atrativoFotoContainer:{
-        height: 100,
-        width: 150,
-        borderRadius: 10,
+        height: 200,
+        width: '100%',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
         marginBottom: 5,
     },
 
-    atrativoProximoButtom:{
-        height: 190,
-        width: 150,
-        borderRadius: 10,
-        marginRight: 20,
+    atrativoButtom:{
+        height:330,
+        width: 330,
+        borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'flex-start',
         backgroundColor: '#FFF',
-        elevation: 3,
+        elevation: 5,
     },
 
     atrativoDetalhe:{
         justifyContent: 'space-between',
+        alignItems:"center",
         flexDirection: 'row',
         paddingHorizontal: 10,
-        width: 150
+        width: '100%',
         
     },
 
-    avaliacaoStarsContainer:{
-        paddingHorizontal: 20,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexDirection: 'row',
-    },
+    descricao:{
+        fontSize: 15,
+        fontFamily: 'Recursive-ExtraBold',
+        color: '#455A64',
+    }
 
 
 

@@ -2,11 +2,17 @@ import * as React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import styles from './style';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useNavigation} from '@react-navigation/native'
+import {useNavigation} from '@react-navigation/native';
+import {Cards} from '../../components/Cards'
+import {atrativos} from '../../components/Objects/Atrativos'
+
+
 
 export default function Home(){
 
     const navigation = useNavigation();
+
+    const [data, setData] = React.useState(atrativos);
 
     function navigationToFavoritos(){
         navigation.navigate('Favoritos')
@@ -16,340 +22,161 @@ export default function Home(){
         navigation.navigate('Atrativos')
     }
 
+    function navigationToTipoRoteiro(){
+        navigation.navigate('Tipo_roteiro')
+    }
+
+    function navigationToAtrativo(atrativo){
+        navigation.navigate('Atrativo', {atrativo});
+    }
+
+    const listSeparetor = () => {
+        return(
+            <View style={{width: 20,}}></View>
+        )
+        
+    }
+
+    
+
+    const renderItem = ({ item }) => {
+        return (
+            <Cards
+                item={item}
+                onPress={() => navigationToAtrativo(item)}
+
+            />
+        );
+    };
+
 
     return(
 
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
+
+            <ScrollView 
+            showsVerticalScrollIndicator={false}>
             
 
-            <View style={styles.topContainer}>
-                <TouchableOpacity onPress={() => navigation.openDrawer()} style={styles.topButton}>
+                <View style={styles.topContainer}>
+                    <TouchableOpacity onPress={() => navigation.openDrawer()} style={styles.topButton}>
+                        
+                        <Icon name="menu" size={35} color='#1E90FF' />
                     
-                    <Icon name="menu" size={45} color='#fff' />
-                
-                </TouchableOpacity>
+                    </TouchableOpacity>
 
-                <Text style={styles.titleText}>
-                    
-                    Vamos Turistar!
-                </Text>
-                
-                <TouchableOpacity style={styles.topButton}>
-                
-                    <Icon name="map" size={45} color='#fff' />
-                    
-                    <Text style={{
-                        fontWeight: 'bold', 
-                        color:'#fff' }}>
-                    
-                        Mapa
-                    
+                    <Text style={styles.title}>
+                        Home
                     </Text>
-                </TouchableOpacity>
-
-                
-
-
-            </View>
-
-
-
-
-
-
-
-
-
-
-
-
-            <View style={styles.optionsContainer} >
-
-                <TouchableOpacity style={styles.optionButtonContainer}>
-                    <Icon
-                    name="map-marker"
-                    size={30}/>
                     
-                    <Text 
-                    style={{fontWeight: 'bold'}}>
+
+
+                </View>
+
+                <View style={styles.cabecalhoContainer}>
+                    <Text style={styles.cabecalho}>Vamos turistar?</Text>
+                </View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <View style={styles.optionsContainer} >
+
+                    <TouchableOpacity onPress={()=>navigationToTipoRoteiro()}  style={styles.optionButtonContainer}>
                         
-                        Roteiro
-                
-                    </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.optionButtonContainer}
-                onPress={()=>navigationToFavoritos()}>               
-                    <Icon name="heart-circle" size={30} />
-                    
-                    <Text style={
-                        {fontWeight: 'bold'}}>
-                        
-                        Favoritos
-                    
-                    </Text>
-            
-                </TouchableOpacity >
-
-                <TouchableOpacity style={styles.optionButtonContainer}
-                onPress={()=>navigationToAtrativos()}>
-                    
-                    <Icon name="camera-image" size={30} />
-                    
-                    <Text style={
-                        {fontWeight: 'bold'}}>
-                        
-                        Atrativos
-                    
-                    </Text>
-                </TouchableOpacity>
-                
-
-            </View>
-
-
-
-
-
-
-
-
-
-
-            <View style={styles.conteudoContainer}>
-
-                <Text style={{
-                            fontSize: 20, 
-                            fontWeight: 'bold',
-                            marginBottom: 15}}> 
-                        
-                            Atrativos perto de você 
-                        
-                </Text>
-
-
-
-
-                
-                <FlatList contentContainerStyle={styles.atrativosProximosContainer}
-                        data={[1,2,3,4,5]}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        keyExtractor={atrativos => String(atrativos)}
-                        renderItem={()=>(
-                            <TouchableOpacity style={styles.atrativoProximoButtom}>
-                        
-                                <Image 
-                                source={require('../../assets/images/maxresdefault.jpg')}
-                                style={styles.atrativoFotoContainer}/>
-                                
-                                <View style={styles.atrativoDetalhe}>
-                                
-                                    <Text>
-                                        <Text style={{fontWeight: 'bold',
-                                                    fontSize: 17}}>
-
-                                            Farol de C... {"\n"}
-                                        
-                                        </Text>
-
-                                        <Text>
-                                            
-                                            Cabo Branco, JP
-                                        
-                                        </Text>
-                                    </Text>
-                                
-                                    <TouchableOpacity>
-                                
-                                        <Icon name="heart-outline" size={30}/>
-                                
-                                    </TouchableOpacity>
-                                
-                                </View>
-
-                                <View style={styles.avaliacaoStarsContainer}>
-
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-
-                                </View>
-
+                        <Text 
+                        style={{fontSize: 17,
+                        color: '#455A64',
+                        fontFamily: 'Recursive-ExtraBold'}}>
                             
-                            </TouchableOpacity>
-
-
-
-                        )}
-
+                            Roteiro
                     
+                        </Text>
+                    </TouchableOpacity>
 
-                />
-
-
-
-
-
-
-
-
-
-                <Text style={{
-                            fontSize: 20, 
-                            fontWeight: 'bold',
-                            marginBottom: 15}}> 
+                    <TouchableOpacity style={styles.optionButtonContainer}
+                    onPress={()=>navigationToFavoritos()}>               
                         
-                            Atrativos mais visitados 
-                        
-                </Text>
-
-
-                <FlatList contentContainerStyle={styles.atrativosProximosContainer}
-                        data={[1,2,3,4,5]}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        keyExtractor={atrativos => String(atrativos)}
-                        renderItem={()=>(
-                            <TouchableOpacity style={styles.atrativoProximoButtom}>
-                        
-                                <Image 
-                                source={require('../../assets/images/maxresdefault.jpg')}
-                                style={styles.atrativoFotoContainer}/>
-                                
-                                <View style={styles.atrativoDetalhe}>
-                                
-                                    <Text>
-                                        <Text style={{fontWeight: 'bold',
-                                                    fontSize: 17}}>
-
-                                            Farol de C... {"\n"}
-                                        
-                                        </Text>
-
-                                        <Text>
-                                            
-                                            Cabo Branco, JP
-                                        
-                                        </Text>
-                                    </Text>
-                                
-                                    <TouchableOpacity>
-                                
-                                        <Icon name="heart-outline" size={30}/>
-                                
-                                    </TouchableOpacity>
-                                
-                                </View>
-
-
-                                <View style={styles.avaliacaoStarsContainer}>
-
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-
-                                </View>
-
+                        <Text style={
+                            {fontSize: 17,
+                            color: '#455A64',
+                            fontFamily: 'Recursive-ExtraBold'}}>
                             
-                            </TouchableOpacity>
-
-
-
-                        )}
-
-                    
-
-                />
-
-
-
-
-
-
-
-
-                <Text style={{
-                            fontSize: 20, 
-                            fontWeight: 'bold',
-                            marginBottom: 15}}> 
+                            Favoritos
                         
-                            Atrativos mais bem avalidados 
+                        </Text>
+                
+                    </TouchableOpacity >
+
+                    <TouchableOpacity style={styles.optionButtonContainer}
+                    onPress={()=>navigationToAtrativos()}>
                         
-                </Text>
-
-
-                <FlatList contentContainerStyle={styles.atrativosProximosContainer}
-                        data={[1,2,3,4,5]}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        keyExtractor={atrativos => String(atrativos)}
-                        renderItem={()=>(
-                            <TouchableOpacity style={styles.atrativoProximoButtom}>
-                        
-                                <Image 
-                                source={require('../../assets/images/maxresdefault.jpg')}
-                                style={styles.atrativoFotoContainer}/>
-                                
-                                <View style={styles.atrativoDetalhe}>
-                                
-                                    <Text>
-                                        <Text style={{fontWeight: 'bold',
-                                                    fontSize: 17}}>
-
-                                            Farol de C... {"\n"}
-                                        
-                                        </Text>
-
-                                        <Text>
-                                            
-                                            Cabo Branco, JP
-                                        
-                                        </Text>
-                                    </Text>
-                                
-                                    <TouchableOpacity>
-                                
-                                        <Icon name="heart-outline" size={30}/>
-                                
-                                    </TouchableOpacity>
-                                
-                                </View>
-
-
-                                <View style={styles.avaliacaoStarsContainer}>
-
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-                                    <Icon name="star-outline" size={25}/>
-
-                                </View>
-
+                        <Text style={
+                            {fontSize: 17,
+                            color: '#455A64',
+                            fontFamily: 'Recursive-ExtraBold'}}>
                             
-                            </TouchableOpacity>
-
-
-
-                        )}
-
+                            Atrativos
+                        
+                        </Text>
+                    </TouchableOpacity>
                     
 
-                />
+                </View>
 
-            </View>
+
+
+
+
+
+
+
+
+
+                <View style={styles.conteudoContainer}>
+
+                    <Text style={styles.cabecalhoII}>
+                                Atrativos perto de você
+                    </Text>
+
+
+
+
+                    <FlatList contentContainerStyle={{padding: 5,}}
+                            data={data}
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            keyExtractor={item => item.id}
+                            renderItem={renderItem}
+                            ListEmptyComponent={() => (
+                                <Text style={{fontSize: 15, color: 'gray', fontFamily: 'Recursive-ExtraBold'}}>
+                                    Nenhum atrativo encontrado
+                                </Text>
+                            )}
+                            ItemSeparatorComponent={listSeparetor}
+                    />
+                    
+
+                </View>
+
+            </ScrollView>
 
             
 
 
 
 
-        </ScrollView>
+        </View>
     );
 
 }

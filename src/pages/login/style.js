@@ -4,78 +4,117 @@ export default StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#1E90FF',
-        alignItems: 'center',
+        padding: 10,
+        backgroundColor: 'rgba(30,136, 229, 0.7)',
+        alignItems: "center",
+        justifyContent: "space-between",
         
 
     },
 
-    logoContainer: {
+    topContainer:{
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20
+        paddingHorizontal: 10,
+
     },
 
-    header: {
-        fontSize: 35,
-        fontWeight: 'bold',
+    titulo:{
+        marginLeft: 30,
+        fontSize: 25,
         color: '#fff',
-        textAlign: 'center',
-        marginHorizontal: 50,
+        fontFamily: 'Roboto-Bold',
     },
 
 
     LoginComponetesContainer: {
         alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 70
+        justifyContent: "space-between",
     },
 
 
     input: {
-        backgroundColor: '#fff',
         width: 300,
-        height: 45,
-        color: '#00080A',
+        height: 50,
+        color: '#fff',
+        borderBottomWidth: 1,
+        borderColor: '#fff',
         fontSize: 20,
         fontWeight: 'bold',
         justifyContent: 'center',
-        borderRadius: 7,
-        paddingHorizontal: 10,
-        marginTop: 20
+        alignItems: "flex-start",
+        padding: 10,
+        marginTop: 20,
     },
 
     buttomLogin: {
         backgroundColor: '#FFF',
         width: 200,
-        height: 40,
-        borderRadius: 20,
+        height: 45,
+        borderRadius: 7,
         marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 7,
-        },
-        shadowOpacity: 0.41,
-        shadowRadius: 9.11,
+        elevation: 7,
+    },
 
-        elevation: 14,
+    buttomLoginFBGG: {
+        backgroundColor: '#FFF',
+        flexDirection: "row",
+        borderRadius: 7,
+        marginTop: 20,
+        width: 260,
+        height: 37,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        elevation: 7,
     },
 
     loginText: {
         color: '#00080A',
         fontSize: 25,
-        fontWeight: 'bold'
+        fontFamily: 'Rrecurs',
+    },
+
+    fbGGloginText:{
+        color: '#00080A',
+        fontSize: 20,
+        fontFamily: 'Roboto-Medium',
     },
 
     buttomEsqueciSenha: {
         color: "#fff",
         fontWeight: 'bold',
-        fontSize: 15
-    }
+        fontSize: 15,
+        marginTop: 20,
+        marginBottom: 20,
+        borderBottomWidth: 1,
+        borderColor: '#fff',
+    },
 
+    ggLoginIcon:{
+        backgroundColor: 'red',
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 7,
+        marginRight: 5,
+        height: 37,
+        width: 35,
+
+    },
+
+    fbLoginIcon:{
+        backgroundColor: 'blue',
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 7,
+        marginRight: 5,
+        height: 37,
+        width: 35,
+
+    }
 
 
 })

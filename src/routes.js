@@ -17,44 +17,42 @@ import QuemSomos from './pages/quem-somos';
 import Favoritos from './pages/favoritos';
 import Cidade from './pages/cidade';
 import Atrativo from './pages/atrativo';
+import Map from './pages/map';
+
 
 function DrawerPages(){
     return (
 
         
-            <AppDrawer.Navigator screenOptions = {{headerShown:false}}>
-
-                <AppDrawer.Screen name = "Atrativo" component = {Atrativo}/>
+            <AppDrawer.Navigator>
+                
                 <AppDrawer.Screen name = "Home" component = {Home}/>
-                <AppDrawer.Screen name = "Tipo_roteiro" component = {Tipo_roteiro}/>
-                <AppDrawer.Screen name = "Roteiro_cidades" component = {Roteiro_cidades}/>
-                <AppDrawer.Screen name = "Atrativos" component = {Atrativos}/>
+                <AppDrawer.Screen name = "Atrativos" component = {Atrativos}/>   
                 <AppDrawer.Screen name = "QuemSomos" component = {QuemSomos}/>
                 <AppDrawer.Screen name = "Favoritos" component = {Favoritos}/>
-                <AppDrawer.Screen name = "Cidade" component = {Cidade}/>
                 
-
-            </AppDrawer.Navigator >
-        
+                
+            </AppDrawer.Navigator >  
     );
-
 }
 
 export default function StackPages(){
     return(
         <NavigationContainer>
-
             <AppStack.Navigator screenOptions = {{headerShown:false}}>
-            <AppDrawer.Screen name = "DrawerPages" component = {DrawerPages}/>
                 <AppStack.Screen name = "Inicial" component = {Inicial}/>
-                <AppStack.Screen name = "Cadastro" component = {Cadastro}/>
                 <AppStack.Screen name = "Login" component = {Login}/>
+                <AppStack.Screen name = "Cadastro" component = {Cadastro}/>
+                <AppDrawer.Screen name = "DrawerPages" component = {DrawerPages}/>
+                <AppStack.Screen name = "Tipo_roteiro" component = {Tipo_roteiro} />
+                <AppStack.Screen name = "Roteiro_cidades" component = {Roteiro_cidades}/>
+                <AppStack.Screen name = "Cidade" component = {Cidade}/>
+                <AppStack.Screen name = "Atrativo" component = {Atrativo}/>
+                <AppStack.Screen name = "Map" component = {Map}/>
+                
                 
             </AppStack.Navigator>
-
-
         </NavigationContainer>
-
     );
 }
 

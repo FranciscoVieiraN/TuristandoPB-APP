@@ -3,36 +3,41 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
 
     container:{
-        backgroundColor: '#fff',
         flex: 1,
-        padding: 20,
-        justifyContent: 'flex-start'
+        backgroundColor: '#fff',
     },
 
-    topContainer:{
+    topContainer: {
+        padding: 10,
+        width: '100%',
+        paddingHorizontal: 20,
+        marginBottom: 20,
         flexDirection: 'row',
-        alignItems: 'center',
         justifyContent: 'flex-start',
-        marginBottom: 20
+        alignItems: 'center',
+        backgroundColor: '#0D47A1',
+        elevation: 7,
 
     },
 
-    titulo:{
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#1E90FF',
-        marginLeft: 30
-
+    titulo: {
+        fontSize: 25,
+        fontFamily: 'Roboto-Bold',
+        color: '#FFF',
+        marginLeft: 40,
     },
 
     conteudoContainer:{
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 20,
     },
 
     textoContainer:{
-        textAlign: 'justify',
-        fontSize: 17,
+        textAlign: "justify",
+        fontSize: 20,
+        color: 'gray',
+        fontFamily: "Recursive-Medium",
 
     },
 

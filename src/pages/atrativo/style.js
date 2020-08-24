@@ -9,60 +9,70 @@ export default StyleSheet.create({
 
     },
 
-    topContainer:{
-        flexDirection:'row',
+    topContainer: {
+        padding: 10,
+        width: '100%',
+        paddingHorizontal: 10,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        padding: 5
-    },
-    
-    titulo:{
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#1E90FF',
-        marginLeft: 20,
+        backgroundColor: '#0D47A1',
+        elevation: 7,
+
     },
 
-    imagemAtrativo:{
-        height: 250,
-        marginBottom: 10,
-        alignItems: 'flex-end',
-        justifyContent: 'center'
+    titulo: {
+        fontSize: 25,
+        fontFamily: 'Roboto-Bold',
+        color: '#FFF',
+        marginLeft: 40,
     },
 
-    nextImageButtom:{
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        flex: 1,
-        justifyContent: "center"
+    imagem:{
+        width: '100%',
+        height: '100%',
+    },
+
+    imagemContainer:{
+        alignItems: "center",
+        justifyContent: "center",
+        height: 300,
+        width: '100%',
+        
     },
 
     detalhesContainer:{
-        padding: 10
+        padding: 10,
+        backgroundColor: '#fff',
+    },
+
+    nomeAtrativo:{
+        fontSize: 25,
+        fontFamily: 'Recursive-Black',
+    },
+
+    enderecoAtrativo:{
+        fontSize: 20,
+        marginBottom: 10,
+        fontFamily: 'Recursive-Black',
+        color: 'gray'
     },
 
     buttonsContainer:{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        width: '100%',
+        justifyContent: 'flex-start',
         padding: 10,
     },
 
     verNoMapaButtom:{
-        padding: 10,
         borderRadius:10,
+        width: 290,
+        height: 90,
         backgroundColor:'#fff',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         elevation:5,
-    },
-
-    visualizacoes:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row',
-        borderBottomColor: '#DCDCDC',
-        borderBottomWidth: 1,
-        padding: 20,
     },
 
     avaliacaoContainer:{
@@ -79,16 +89,24 @@ export default StyleSheet.create({
     },
 
     descricaoContainer:{
-        padding: 20,
-        borderBottomColor: '#DCDCDC',
-        borderBottomWidth: 1,
+        padding: 10,
     },
 
-    textoDescricao:{
-        fontSize: 19,
-        marginTop: 10,
-        fontWeight: 'bold',
-        color: '#808080',
+    cabecalho:{
+        width: '100%',
+        borderBottomWidth: 2,
+        borderColor: '#455A64',
+        color: '#455A64',
+        marginBottom: 10,
+        fontSize: 25,
+        fontWeight: "bold",
+    },
+    
+    descricao:{
+        textAlign: "justify",
+        fontSize: 20,
+        color: 'gray',
+        fontFamily: "Recursive-Medium",
     },
 
     informacoesContainer:{
@@ -104,6 +122,11 @@ export default StyleSheet.create({
         marginBottom: 10,
     },
 
+
+    mapView:{
+        height: 200,
+        width: '100%',
+    },
 
 
 

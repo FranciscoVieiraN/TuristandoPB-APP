@@ -1,5 +1,5 @@
 {
-  "name": "turistando",
+  "name": "turistandopbapp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,34 +10,38 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/masked-view": "^0.1.10",
-    "@react-navigation/drawer": "^5.8.2",
-    "@react-navigation/native": "^5.5.0",
-    "@react-navigation/stack": "^5.4.1",
-    "react": "16.11.0",
-    "react-native": "0.62.2",
+    "@react-navigation/drawer": "^5.8.5",
+    "@react-navigation/native": "^5.7.0",
+    "@react-navigation/stack": "^5.7.0",
+    "axios": "^0.19.2",
+    "geolib": "^3.3.1",
+    "react": "16.13.1",
+    "react-native": "0.63.1",
+    "react-native-geocoding": "^0.4.0",
+    "react-native-geolocation-service": "^5.0.0",
     "react-native-gesture-handler": "^1.6.1",
+    "react-native-maps": "^0.27.1",
+    "react-native-maps-directions": "^1.8.0",
     "react-native-reanimated": "^1.9.0",
-    "react-native-safe-area-context": "^3.0.2",
-    "react-native-screens": "^2.8.0",
-    "react-native-vector-icons": "^6.6.0"
+    "react-native-safe-area-context": "^3.1.1",
+    "react-native-screens": "^2.9.0",
+    "react-native-search-bar": "^3.5.1",
+    "react-native-swiper": "^1.6.0",
+    "react-native-vector-icons": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.1",
-    "@babel/runtime": "^7.10.1",
-    "@react-native-community/eslint-config": "^1.1.0",
-    "babel-jest": "^26.0.1",
-    "eslint": "^7.1.0",
-    "jest": "^26.0.1",
-    "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.11.0"
+    "@babel/core": "^7.10.5",
+    "@babel/runtime": "^7.10.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "babel-jest": "^26.1.0",
+    "eslint": "^7.4.0",
+    "jest": "^26.1.0",
+    "metro-react-native-babel-preset": "^0.60.0",
+    "react-test-renderer": "16.13.1"
   },
   "jest": {
     "preset": "react-native"
-  },
-  "rnpm": {
-    "assets": [
-      "assets/fonts/Roboto"
-    ]
   }
 }
