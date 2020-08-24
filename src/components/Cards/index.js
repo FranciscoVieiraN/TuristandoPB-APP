@@ -32,7 +32,7 @@ export const Cards = ({ item, onPress}) => (
                     borderBottomWidth: 2,
                     borderColor: 'gray'}}>
 
-                    {item.title}
+                    {item.nome}
 
                 </Text>
 
