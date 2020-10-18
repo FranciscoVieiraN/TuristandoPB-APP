@@ -12,53 +12,10 @@ import styles from './style';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native'
 import SearchBar from 'react-native-search-bar';
+import {Cards} from '../../components/Cards'
 
 
 
-const Item = ({ item, onPress}) => (
-    <TouchableOpacity 
-    onPress={onPress}
-    style={styles.atrativoButtom}>
-        <Image 
-        source={{uri: item.images[0].url}}
-        style={styles.atrativoFotoContainer}/>
-        
-        <View style={styles.atrativoDetalhe}>
-            <View>
-
-                <View style={{
-                    flexDirection: "row", 
-                    width: '100%', 
-                    justifyContent: "space-between", 
-                    alignItems: "center",}}>
-
-                <Text numberOfLines={1} style={{
-                    fontFamily: 'Recursive-Black',
-                    fontSize: 20,
-                    marginBottom: 10,
-                    borderBottomWidth: 2,
-                    borderColor: "#fff",
-                    color: '#fff',}}>
-
-                    {item.title}
-
-                </Text>
-
-
-                </View>
-
-                <Text numberOfLines={3} style={styles.descricao}>
-                    {item.descricao}
-                
-                </Text>
-            
-            </View>
-
-        </View>    
-    
-    </TouchableOpacity>
-    
-);
 
 export default function Atrativos(){
 
@@ -70,9 +27,6 @@ export default function Atrativos(){
     
     const [loading ,setLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
-
-    const { width } = Dimensions.get('window');
-
     const [data, setData] = React.useState([{
         id: "1",
         title: "Farol de Cabo Branco",
@@ -223,7 +177,7 @@ export default function Atrativos(){
 
     const renderItem = ({ item }) => {
         return (
-            <Item
+            <Cards
                 item={item}
                 onPress={() => navigateToAtrativo(item)}
 
@@ -243,6 +197,14 @@ export default function Atrativos(){
         setData(newData);  
       };
 
+      const listSeparetor = () => {
+        return(
+            <View style={{height: 20,}}></View>
+        )
+        
+    }
+      
+
 
 
 
@@ -252,47 +214,55 @@ export default function Atrativos(){
 
         <View style={styles.container}>
 
-            <ScrollView
-            showsVerticalScrollIndicator={false}>
-
                 <View style={styles.topContainer}>
-                    <TouchableOpacity onPress={() => navigation.openDrawer()}>
-                        <Icon name="menu" size={35} color='#1E90FF' />
+
+                    <TouchableOpacity
+                    onPress={()=>navigation.goBack()}>
+                        <Icon name='arrow-left' color={'#0D47A1'} size={45}/>
                     </TouchableOpacity>
-                    <Text style={styles.titulo}>Atrativos</Text>
+                    
                 </View>
 
                 <View style={{
-                    backgroundColor: 'lightgray',
-                    borderRadius: 20,
-                    padding: 2,
-                    width: '98%',
-                    margin: 5}}>
+                            paddingHorizontal: 20, 
+                            width: '100%'}}>
 
-                <SearchBar        
-                placeholder="Atrativo/Região..."
-                textColor={'black'}
-                lightTheme        
-                round        
-                onChangeText={text => searchFilterFunction(text)}
-                autoCorrect={false}
-                style={{width: '100%', height: 40, borderRadius: 10,}}
-                />
+                            <Text style={styles.cabecalhoII}>
+                                        O que você gostaria de visitar hoje? 
+                                    
+                            </Text>
 
                 </View>
 
                 
                     <View style={styles.conteudoContainer}>
 
-                        <Text style={styles.cabecalhoII}>
-                                    O que você gostaria de visitar hoje? 
-                                
-                        </Text>
+                        <View style={{
+                        backgroundColor: 'lightgray',
+                        borderRadius: 20,
+                        marginBottom: 10,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: '90%',
+                        margin: 5}}>
 
-                        <FlatList 
-                        contentContainerStyle={styles.atrativosContainer}
+                            <SearchBar        
+                            placeholder="Pesquisar atrativo..."
+                            textColor={'black'}
+                            lightTheme        
+                            round        
+                            onChangeText={text => searchFilterFunction(text)}
+                            autoCorrect={false}
+                            style={{width: '100%', height: 40, borderRadius: 10,}}
+                            />
+
+                        </View>
+
+                        
+                        
+                        <FlatList
+                        contentContainerStyle={{padding: 20,}}
                         data={data}
-                        scrollEnabled={false}
                         showsVerticalScrollIndicator={false}
                         keyExtractor={item => item.id}
                         renderItem={renderItem}
@@ -303,13 +273,13 @@ export default function Atrativos(){
                                 Nenhum atrativo encontrado
                             </Text>
                         )}
-                        numColumns={2}
+                        ItemSeparatorComponent={listSeparetor}
                         />
                         
 
                     </View>
 
-                </ScrollView>
+                
                                  
         
 

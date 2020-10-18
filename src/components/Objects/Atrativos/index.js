@@ -1,6 +1,6 @@
 export const atrativos = [{
         id: "1",
-        nome: "Farol de Cabo Branco",
+        title: "Farol de Cabo Branco",
         endereco: "João Pessoa, PB",
         descricao: "blablablablablablablablablablablablablablablablablablablablablablablablablablabla",
         telefone: "(83) 98615-0095",
@@ -24,7 +24,7 @@ export const atrativos = [{
     },
     {
         id: "2",
-        nome: "UFPB",
+        title: "UFPB",
         endereco: "João Pessoa, Castelo Branco",
         descricao: "blablablablablablablablablablablablablablablablablablablablablablablablablablabla",
         telefone: "(83) 98615-0095",
@@ -48,7 +48,7 @@ export const atrativos = [{
     },
     {
         id: "3",
-        nome: "Estação Ciências",
+        title: "Estação Ciências",
         endereco: "João Pessoa, PB",
         descricao: "blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla",
         telefone: "(83) 98615-0095",

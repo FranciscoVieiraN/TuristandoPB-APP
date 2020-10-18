@@ -12,20 +12,24 @@ export default StyleSheet.create({
         alignItems: "center",
     },
 
-    topContainer:{
-        width: '100%',
+    topContainer: {
         padding: 10,
+        width: '100%',
+        paddingHorizontal: 20,
+        marginBottom: 20,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
+        backgroundColor: '#0D47A1',
+        elevation: 7,
 
     },
 
-    titulo:{
-        marginLeft: 30,
+    titulo: {
         fontSize: 25,
-        color: '#1E90FF',
-        fontWeight: 'bold',
+        fontFamily: 'Roboto-Bold',
+        color: '#FFF',
+        marginLeft: 40,
     },
 
     conteudoContainer:{
@@ -39,7 +43,10 @@ export default StyleSheet.create({
     dadosUsuarioContainer:{
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 5,
+        elevation: 7,
+        backgroundColor: 'white',
+        borderRadius: 10,
+        padding: 30,
     },
 
     fotoUsuarioContainer:{
@@ -85,18 +92,20 @@ export default StyleSheet.create({
 
     btnSubmit:{
         backgroundColor: '#1E90FF',
-        width: 165,
-        height:40,
-        borderRadius: 20,
-        justifyContent:'center',
-        alignItems: 'center'
+        width: 200,
+        height: 45,
+        borderRadius: 7,
+        marginTop: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 7,
 
     },
 
     textSubmit:{
         color: '#fff',
         fontSize: 25,
-        fontWeight:'bold',
+        fontFamily:'Roboto-Bold',
     }
 
 })

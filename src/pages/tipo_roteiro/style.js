@@ -6,23 +6,25 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
+        padding: 20,
         backgroundColor: '#fff',
     },
 
-    topContainer:{
+    topContainer: {
         width: '100%',
-        padding: 10,
+        marginBottom: 10,
+        marginTop: 10,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
 
     },
 
-    titulo:{
-        marginLeft: 30,
+    titulo: {
         fontSize: 25,
-        color: '#1E90FF',
-        fontWeight: 'bold',
+        fontFamily: 'Roboto-Bold',
+        color: '#FFF',
+        marginLeft: 40,
     },
 
     conteudoConteiner:{
@@ -32,7 +34,7 @@ export default StyleSheet.create({
     },
 
     caixaContainer:{
-        height: '60%',
+        height: 500,
         width: 300,
         backgroundColor: "#fff",
         justifyContent: "center",
@@ -44,9 +46,12 @@ export default StyleSheet.create({
     },
 
     cabecalho:{
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontSize: 25, 
+        fontFamily: 'Roboto-Bold',
+        textAlign: "center",
         marginBottom: 20,
+        marginTop: 30,
+        color: '#455A64'
     },
 
     opcoesRoteiro:{
@@ -68,7 +73,6 @@ export default StyleSheet.create({
 
     opcoesRoteiroContainer:{
         justifyContent: "space-between",
-        height: 250,
         padding: 10,
         backgroundColor: '#fff',
     },
@@ -80,7 +84,8 @@ export default StyleSheet.create({
 
     opcoesRoteiroTextSelected:{
         fontSize: 20,
-        color: '#fff'
+        color: '#fff',
+        fontFamily: 'Roboto-Bold',
     },
 
     buttomContinue:{

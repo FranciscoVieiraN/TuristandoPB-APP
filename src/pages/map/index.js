@@ -19,6 +19,8 @@ import Geolocation from '@react-native-community/geolocation';
 import styles from './style';
 import {Directions} from '../../components/Directions';
 import {getDistance} from 'geolib';
+import SnackBar from 'react-native-snackbar';
+import Snackbar from 'react-native-snackbar';
 
 
 
@@ -41,9 +43,10 @@ export default function Map(){
 
     const [mapView, setMapView] = React.useState(null);
     const [mark, setMark] = React.useState(null);
-    const [followUserLocation, setFollowUserLocation] = React.useState(true);
+    const [followUserLocation, setFollowUserLocation] = React.useState(null);
     const [mode, setMode] = React.useState('DRIVING');
-    const [distance, setDistance] = React.useState(0);
+    const [distance, setDistance] = React.useState(null);
+    const [chegou, setChegou] = React.useState(false);
 
     
     const destination = route.params.atrativo;
@@ -74,6 +77,7 @@ export default function Map(){
             PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
         );
         getCurrentLocation();
+        setTimeout(()=>{setFollowUserLocation(true)}, 3500);
     },[])
 
     
@@ -84,6 +88,7 @@ export default function Map(){
             
                 <MapView
                 ref={el => setMapView(el)}
+                showsCompass={false}
                 initialRegion={{
                     latitude: destination.latitude,
                     longitude: destination.longitude,
@@ -92,17 +97,37 @@ export default function Map(){
                     }}
                 onUserLocationChange={event => {
                     setOrigin(event.nativeEvent.coordinate)
-                    setDistance(getDistance(origin,{
-                        latitude: destination.latitude,
-                        longitude: destination.longitude}, 100))
+
+                    if(destination !== null){
+                        setDistance(getDistance(origin,{
+                            latitude: destination.latitude,
+                            longitude: destination.longitude}, 1));
+                    }
+                    
+                    if(chegou===false){
+                        if(distance > 0 && distance <= 3){
+                            SnackBar.show({
+                                text: "Você chegou ao destino!",
+                                fontFamily: 'Roboto-Bold',
+                                duration: Snackbar.LENGTH_LONG,
+                                backgroundColor: '#0D47A1',
+                                textColor: '#fff',
+                            });
+                            setChegou(true)
+                            
+                        }
+                    }
+                    
 
                     if(followUserLocation){
-                        mapView.animateToCoordinate(event.nativeEvent.coordinate, 1000);
+                        mapView.animateToCoordinate(
+                            event.nativeEvent.coordinate, 1000);
                     }
                     
                 }}
                 showsUserLocation={true}
                 style={styles.mapView}>
+
                     <React.Fragment>
                         <Marker
                         ref={el => setMark(el)}
@@ -112,34 +137,31 @@ export default function Map(){
                             latitude: destination.latitude,
                             longitude: destination.longitude}}
                         />
-
-                        <Directions
-                        origin={origin}
-                        destination={{
-                            latitude: destination.latitude,
-                            longitude: destination.longitude}}
-                        mode={mode}
-                        />
                     </React.Fragment>
+
+                { chegou===false && 
+
+                    <Directions
+                    origin={origin}
+                    destination={{
+                        latitude: destination.latitude,
+                        longitude: destination.longitude}}
+                    mode={mode}
+                    />
+                
+                }
+                    
                 </MapView>
 
                 <View style={styles.topContainer}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Icon name="arrow-left" size={35} color='#0D47A1'/>
+                    <TouchableOpacity
+                    style={{
+                        backgroundColor: 'rgba(255,255,255,0.8)',
+                        borderRadius: 10,
+                }} 
+                    onPress={() => navigation.goBack()}>
+                        <Icon name="arrow-left" size={45} color='#0D47A1'/>
                     </TouchableOpacity>
-                    <Text style={styles.titulo}>Mapa</Text>
-                </View>
-
-                <View style={styles.modeBoxInfo}>
-                        <Text style={{
-                            fontSize: 15,
-                            fontFamily: 'Roboto-Bold',
-                            color:'#0D47A1'}}>
-                        
-                                Modo: {mode==='DRIVING' ? 
-                                'Dirigindo' : 'Andando'}
-                                
-                        </Text>
                 </View>
 
                 <View
@@ -156,32 +178,79 @@ export default function Map(){
                     </View>
 
                     <View style={{height: 300}}>
+
+
+                        {mode==="DRIVING" ?
                         <TouchableOpacity
                         onPress={() =>setMode("DRIVING")}
-                        style={styles.myLocationButtom}>
+                        style={styles.modeButtomSelected}>
                             <Icon2 
                             name='drive-eta' 
-                            size={30}/>
+                            size={30}
+                            color={'#fff'}/>
+                        </TouchableOpacity> :
+                        <TouchableOpacity
+                        onPress={() =>setMode("DRIVING")}
+                        style={styles.modeButtom}>
+                            <Icon2 
+                            name='drive-eta' 
+                            size={30}
+                            color={'black'}/>
                         </TouchableOpacity>
+                        }
 
+                        
+                        {mode==="WALKING" ?
                         <TouchableOpacity
                         onPress={() =>setMode("WALKING")}
-                        style={styles.myLocationButtom}>
+                        style={styles.modeButtomSelected}>
                             <Icon2
                             name='directions-walk' 
-                            size={30}/>
+                            size={30}
+                            color={'#fff'}/>
                         </TouchableOpacity>
-                        
+                        :
                         <TouchableOpacity
-                        onPress={() =>{
-                            mapView.animateToCoordinate(origin, 1000);
-                            setFollowUserLocation(true)}}
-                        style={styles.myLocationButtom}>
-                            <Icon2 
-                            name='my-location' 
-                            size={30}/>
-                        </TouchableOpacity>
+                        onPress={() =>setMode("WALKING")}
+                        style={styles.modeButtom}>
+                            <Icon2
+                            name='directions-walk' 
+                            size={30}
+                            color={'black'}/>
+                        </TouchableOpacity>}
 
+                        
+
+                        {followUserLocation==true ? 
+
+                            <TouchableOpacity
+                            onPress={() =>{
+                                mapView.animateToCoordinate(origin, 1000);
+                                setFollowUserLocation(!followUserLocation)}}
+                            style={styles.myLocationButtomSelected}>
+                                <Icon2 
+                                name='my-location' 
+                                size={30}
+                                color={'#fff'}/>
+                            </TouchableOpacity>
+
+                        
+                        :
+                        
+                            <TouchableOpacity
+                            onPress={() =>{
+                                mapView.animateToCoordinate(origin, 1000);
+                                setFollowUserLocation(!followUserLocation)}}
+                            style={styles.myLocationButtom}>
+                                <Icon2 
+                                name='my-location' 
+                                size={30}
+                                color={'black'}/>
+                            </TouchableOpacity>
+
+                        }
+
+                        
                         <TouchableOpacity
                         onPress={() => {
                             setFollowUserLocation(false)

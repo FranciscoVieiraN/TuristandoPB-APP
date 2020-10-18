@@ -4,37 +4,11 @@ import styles from './style';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Swiper from 'react-native-swiper';
+import {Cards} from '../../components/Cards'
 
 
 
 
-const Item = ({ item, onPress}) => (
-    <TouchableOpacity 
-    onPress={onPress}
-    style={styles.atrativoButtom}>
-        <Image 
-        source={{uri: item.images[0].url}}
-        style={styles.atrativoFotoContainer}/>
-        
-        <View style={styles.atrativoDetalhe}>
-            <View>
-                <Text numberOfLines={1} style={{fontWeight: 'bold',
-                            fontSize: 17}}>
-                    {item.title}
-                </Text>
-
-                <Text numberOfLines={1}>
-                    {item.endereco}
-                </Text>
-            </View>
-        
-            <TouchableOpacity>
-                <Icon name="heart-outline" size={30}/>
-            </TouchableOpacity>
-
-        </View>    
-    </TouchableOpacity>
-);
 
 export default function Cidade(){
 
@@ -113,15 +87,19 @@ export default function Cidade(){
         longitude:-34.8003526,
     },];
 
-    let cidade = route.params.cidade;
+    const cidade = route.params.cidade;
 
     function navigateGoBack(){
         navigation.goBack();
     }
 
+    function navigationToAtrativo(atrativo){
+        navigation.navigate('Atrativo', {atrativo})
+    }
+
     const renderItem = ({ item }) => {
         return (
-            <Item
+            <Cards
                 item={item}
                 onPress={() => navigationToAtrativo(item)}
 
@@ -129,27 +107,33 @@ export default function Cidade(){
         );
     };
 
+    const listSeparetor = () => {
+        return(
+            <View style={{width: 20,}}></View>
+        )
+        
+    }
+
 
     return(
 
         <View style={styles.container}>
 
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
-
-            <View style={styles.topContainer}>
-                <TouchableOpacity onPress={() => navigateGoBack()} style={styles.topButton}>
-                    <Icon name="arrow-left" size={35} color='#1E90FF' />
-                </TouchableOpacity>
-
-                <Text style={styles.titulo}>Roteiro</Text>
-            </View>
+        <ScrollView>
 
             <View style={styles.imagemContainer}>
-                <Swiper showsButtons buttonWrapperStyle={{color: '#fff'}}  dotColor={'#fff'} loop={false}>
+                <Swiper inde={0}  dotColor={'#fff'} loop={true}>
                     {cidade.images.map(imagem =>(
                         <Image key={imagem.id} style={styles.imagem} source={{uri: imagem.url}}/>
                     ))}
                 </Swiper>
+
+                <TouchableOpacity
+                style={styles.topContainer}
+                onPress={()=>navigation.goBack()}>
+                    <Icon name='arrow-left' color={'#0D47A1'} size={45}/>
+                </TouchableOpacity>
+                
             </View>
             
             <View style={styles.detalhesContainer}>
@@ -157,33 +141,16 @@ export default function Cidade(){
                 <View>
                     <Text>
                         <Text style={styles.nomeCidade}>
-                            {cidade.title} {"\n"}
+                            {cidade.title} {'\n'}
                         </Text>
 
                         <Text style={styles.enderecoCidade}>
-                            {cidade.endereco} {"\n"}
+                            {cidade.endereco}
                         </Text>
                     </Text>
                 </View>
 
-                <View style={styles.buttonsNavigationContainer}>
-
-                    
-                    <TouchableOpacity style={styles.inciarButtom}>
-                            <Icon name="play" size={40} style={styles.iniciarIcon}/>
-                            <Text style={{fontSize: 20}}>
-                                Iniciar
-                            </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.verNoMapaButtom}>
-                            <Icon name="map" size={30}/>
-                            <Text style={{fontSize: 20, marginLeft: 10}}>
-                                Ver no mapa
-                            </Text>
-                    </TouchableOpacity>
-
-            </View>
+                
             </View>
 
             <View style={styles.descricaoContainer}> 
@@ -191,19 +158,26 @@ export default function Cidade(){
                 <Text style={styles.descricao}>{cidade.descricao}</Text>
             </View>
 
-            <View style={styles.descricaoContainer}>
+            <View style={styles.atrativosContainer}>
 
-                <Text style={styles.cabecalho}>Atrativos</Text>
+                    <Text style={styles.cabecalhoII}>
+                                Atrativos
+                    </Text>
 
-                <FlatList contentContainerStyle={styles.atrativosContainer}
+
+
+
+                    <FlatList contentContainerStyle={{padding: 10,}}
                             data={data}
                             horizontal
                             showsHorizontalScrollIndicator={false}
                             keyExtractor={item => item.id}
                             renderItem={renderItem}
-                />
+                            ItemSeparatorComponent={listSeparetor}
+                    />
+                    
 
-            </View>
+                </View>
 
 
 

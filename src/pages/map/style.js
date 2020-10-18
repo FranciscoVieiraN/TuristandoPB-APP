@@ -12,12 +12,10 @@ export default StyleSheet.create({
     right: 0,
     bottom: 0,
     left: 0,
-
   },
 
   topContainer: {
-        padding: 10,
-        paddingHorizontal: 20,
+        padding: 20,
         position: "relative",
         flexDirection: 'row',
         justifyContent: 'flex-start',
@@ -60,6 +58,30 @@ export default StyleSheet.create({
   myLocationButtom:{
     padding: 10,
     backgroundColor: '#fff',
+    borderRadius: 20,
+    marginBottom: 20,
+    elevation: 10,
+  },
+
+  myLocationButtomSelected:{
+    padding: 10,
+    backgroundColor: '#0D47A1',
+    borderRadius: 20,
+    marginBottom: 20,
+    elevation: 10,
+  },
+
+  modeButtom:{
+    padding: 10,
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    marginBottom: 20,
+    elevation: 10,
+  },
+
+  modeButtomSelected:{
+    padding: 10,
+    backgroundColor: '#1E90FF',
     borderRadius: 20,
     marginBottom: 20,
     elevation: 10,

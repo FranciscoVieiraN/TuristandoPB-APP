@@ -25,22 +25,20 @@ export const Cards = ({ item, onPress}) => (
 
                 <Text numberOfLines={1} style={{
                     fontFamily: 'Recursive-Black',
-                    fontSize: 20,
-                    marginBottom: 10,
+                    fontSize: 25,
                     color: '#212121',
                     width: '100%',
-                    borderBottomWidth: 2,
-                    borderColor: 'gray'}}>
+                    }}>
 
-                    {item.nome}
+                    {item.title}
 
                 </Text>
 
 
                 </View>
 
-                <Text numberOfLines={3} style={styles.descricao}>
-                    {item.descricao}
+                <Text numberOfLines={1} style={styles.endereco}>
+                    {item.endereco}
                 
                 </Text>
             
@@ -61,8 +59,8 @@ const styles = StyleSheet.create({
     },
 
     cardButtom:{
-        height:330,
-        width: 330,
+        height:290,
+        width: '100%',
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'flex-start',
@@ -79,7 +77,7 @@ const styles = StyleSheet.create({
         
     },
 
-    descricao:{
+    endereco:{
         fontSize: 15,
         fontFamily: 'Recursive-ExtraBold',
         color: '#455A64',

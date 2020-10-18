@@ -147,6 +147,7 @@ export default function Roteiro_cidades(){
             ]
         },
     ];
+    
 
     const searchFilterFunction = text => {    
         const newData = arrayholder.filter(item => {      
@@ -174,34 +175,55 @@ export default function Roteiro_cidades(){
         );
     };
 
+    const listSeparetor = () => {
+        return(
+            <View style={{width: 20,}}></View>
+        )
+        
+    }
+
     return(
 
         <View style={styles.container}>
-            <View style={styles.topContainer}>
-                <TouchableOpacity onPress={()=> navigation.goBack()}>
-                    <Icon name="arrow-left" size={35} color='#1E90FF'/>
+             <View style={styles.topContainer}>
+
+                <TouchableOpacity
+                onPress={()=>navigation.goBack()}>
+                    <Icon name='arrow-left' color={'#0D47A1'} size={45}/>
                 </TouchableOpacity>
-                <Text style={styles.titulo}>Roteiro</Text>
+
             </View>
 
-            <SearchBar
-            placeholder="Type Here..."
-            textColor={'black'}        
-            lightTheme        
-            round  
-            onChangeText={text => searchFilterFunction(text)}
-            autoCorrect={false}
-            style={{width: '90%', height: 50, marginBottom: 20,}}           
-          />
+            <Text style={styles.titleII} >Escolha a cidade onde deseja realizar seu passeio!</Text>
 
-            <Text style={styles.cabecalho} >Cidades</Text>
+            <View style={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: 'lightgray',
+                    borderRadius: 20,
+                    marginBottom: 10,
+                    padding: 2,
+                    width: '90%',
+                    margin: 5}}>
+
+                <SearchBar        
+                placeholder="Pesquisar cidade..."
+                textColor={'black'}
+                lightTheme        
+                round        
+                onChangeText={text => searchFilterFunction(text)}
+                autoCorrect={false}
+                style={{width: '100%', height: 40, borderRadius: 10,}}
+                />
+            </View>
 
             <View style={styles.buttonsContainer}>
+                
 
             <FlatList contentContainerStyle={styles.opcoesCidadeContainer}
                         data={data}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
+                        Vertical
+                        showsVerticalScrollIndicator={false}
                         keyExtractor={item => item.id}
                         renderItem={renderItem}
                         ListEmptyComponent={() => (
@@ -209,6 +231,7 @@ export default function Roteiro_cidades(){
                                 Nenhuma cidade encontrada
                             </Text>
                         )}
+                        numColumns={2}
                 />
 
             </View>

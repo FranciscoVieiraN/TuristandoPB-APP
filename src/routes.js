@@ -26,9 +26,6 @@ function DrawerPages(){
         
             <AppDrawer.Navigator>
                 
-                <AppDrawer.Screen name = "Home" component = {Home}/>
-                <AppDrawer.Screen name = "Atrativos" component = {Atrativos}/>   
-                <AppDrawer.Screen name = "QuemSomos" component = {QuemSomos}/>
                 <AppDrawer.Screen name = "Favoritos" component = {Favoritos}/>
                 
                 
@@ -40,10 +37,9 @@ export default function StackPages(){
     return(
         <NavigationContainer>
             <AppStack.Navigator screenOptions = {{headerShown:false}}>
-                <AppStack.Screen name = "Inicial" component = {Inicial}/>
-                <AppStack.Screen name = "Login" component = {Login}/>
-                <AppStack.Screen name = "Cadastro" component = {Cadastro}/>
-                <AppDrawer.Screen name = "DrawerPages" component = {DrawerPages}/>
+                <AppDrawer.Screen name = "Home" component = {Home}/>
+                <AppDrawer.Screen name = "Atrativos" component = {Atrativos}/>   
+                <AppDrawer.Screen name = "QuemSomos" component = {QuemSomos}/>
                 <AppStack.Screen name = "Tipo_roteiro" component = {Tipo_roteiro} />
                 <AppStack.Screen name = "Roteiro_cidades" component = {Roteiro_cidades}/>
                 <AppStack.Screen name = "Cidade" component = {Cidade}/>

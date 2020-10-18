@@ -8,6 +8,7 @@ import {
     StatusBar,
     Animated,
     AsyncStorage,
+    ActivityIndicator
 } from 'react-native';
 import styles from './style';
 import { TextInput } from 'react-native-gesture-handler';
@@ -24,6 +25,7 @@ import api from '../../services/api'
 export default function Login() {
     const navigation = useNavigation();
     const [passwordInputRef, setPasswordInputRef] = React.useState(null);
+    const [isLoading, setIsLoading] = React.useState(false);
 
 
     const [email, setEmail] = React.useState([]);
@@ -52,7 +54,9 @@ export default function Login() {
             setErroMsg('Preencha todos os campos para continuar!')
         }else{
             try{
-                /**
+                setIsLoading(true)
+
+                /*
                 const response = await api.post('/sessions', {
                     email: email,
                     password: senha,
@@ -63,17 +67,12 @@ export default function Login() {
                     response.data.token);
 
                 */
-
-                const resetActions = StackActions.reset({
-                    index: 0,
-                    actions: [
-                        navigationToHome()
-                    ],
-                });
-
-                navigation.dispatch(resetActions);
+                navigation.pop();
+                navigationToHome();
             } catch(_err){
                 console.log('Erro: ',_err)
+            }finally{
+                setIsLoading(false);
             }
         }
     };
@@ -112,7 +111,11 @@ export default function Login() {
 
             
 
-
+            {isLoading && <ActivityIndicator color={'white'} size='large' style={{position: "absolute",
+                                                                                top: 0,
+                                                                                right: 0,
+                                                                                left: 0,
+                                                                                bottom: 0,}}/>}
             <View style={styles.topContainer}>
                 <TouchableOpacity style={styles.menuButtom} onPress={() => navigation.goBack()}>
                     <Icon2 name="arrow-left" size={35} color='#FFF' />

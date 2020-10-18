@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
     container:{
         flex: 1,
-        padding: 10,
+        padding: 20,
         backgroundColor: 'rgba(30,136, 229, 0.7)',
         alignItems: "center",
         justifyContent: "space-between",
@@ -19,48 +19,12 @@ export default StyleSheet.create({
     logoContainer:{
         alignItems:'center',
         justifyContent: 'center',
+        marginTop: 50,
     },
 
     logo:{
         height: 200,
         width: 200
-    },
-
-    buttonContainer:{
-        alignItems: 'center',
-        justifyContent: "space-between",
-    },
-
-    comecarText:{
-        color: '#00080A',
-        fontSize: 25,
-        fontFamily: 'Roboto-Medium',
-    },
-
-    buttonComecar:{
-        backgroundColor: '#fff', 
-        width: 200,
-        height:45,
-        borderRadius: 7,
-        marginBottom: 15,
-        justifyContent:'center',
-        alignItems: 'center',
-    },
-
-    buttonCadastro:{
-        backgroundColor: '#fff',
-        width: 200,
-        height:45,
-        borderRadius: 7,
-        marginBottom: 15,
-        justifyContent:'center',
-        alignItems: 'center'
-    },
-
-    cadastroText:{
-        color: '#00080A',
-        fontSize: 25,
-        fontFamily: 'Roboto-Medium',
     },
 
     descricaoText:{

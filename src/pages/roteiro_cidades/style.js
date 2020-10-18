@@ -8,52 +8,45 @@ export default StyleSheet.create({
         backgroundColor: '#fff',
     },
 
-    topContainer:{
+    topContainer: {
         width: '100%',
-        marginBottom: 30,
-        padding: 10,
+        marginBottom: 10,
+        marginTop: 10,
+        padding: 20,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
 
     },
 
-    titulo:{
-        marginLeft: 30,
+    titulo: {
         fontSize: 25,
-        color: '#1E90FF',
-        fontWeight: 'bold',
+        fontFamily: 'Roboto-Bold',
+        color: '#FFF',
+        marginLeft: 40,
     },
 
     input: {
+        height: 43,
+        width: 280,
         color: '#00080A',
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: 'bold',
         justifyContent: 'center',
     },
 
-    searchBoxContainer:{
-        width: 350,
-        paddingHorizontal: 5,
-        borderRadius: 50,
-        marginBottom: 30,
-        backgroundColor: '#cecece',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-
-    cabecalho: {
-        fontSize: 25, 
-        fontWeight: 'bold',
-        marginBottom: 20,
+    titleII: {
+        fontSize: 30, 
+        fontFamily: 'Roboto-Bold',
+        width: '90%',
+        marginBottom: 15,
+        color: '#0D47A1'
     },
 
     opcoesCidadeContainer: {
-        height: 400,
         padding: 20,
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: "flex-start",
     },
 
     cidadeImg:{
@@ -64,9 +57,10 @@ export default StyleSheet.create({
     },
 
     buttomCidade:{
-        marginRight: 20,
-        height: '100%',
-        width: 200,
+        height: 280,
+        width: 180,
+        marginHorizontal: 5,
+        marginVertical: 5,
         alignItems: "center",
         justifyContent:"center",
         backgroundColor: '#fff',
@@ -75,6 +69,7 @@ export default StyleSheet.create({
     },
 
     buttonsContainer:{
+        flex: 1,
         width: '100%',
     },
 

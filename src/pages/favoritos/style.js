@@ -28,7 +28,7 @@ export default StyleSheet.create({
 
     conteudoContainer:{
         flex:1,
-        padding: 5,
+        padding: 1,
         alignItems: 'center',
     },
 
@@ -36,8 +36,6 @@ export default StyleSheet.create({
         fontSize: 30, 
         fontFamily: 'Roboto-Bold',
         width: '98%',
-        borderBottomWidth: 2,
-        borderColor: '#455A64',
         marginTop: 30,
         marginBottom: 15,
         color: '#455A64'
@@ -91,15 +89,6 @@ export default StyleSheet.create({
         padding: 2,
         alignItems: 'center',
         justifyContent: 'center'
-    },
-
-    input: {
-        height: 43,
-        width: 280,
-        color: '#00080A',
-        fontSize: 15,
-        fontWeight: 'bold',
-        justifyContent: 'center',
     },
 
     searchBoxContainer:{

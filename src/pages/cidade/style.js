@@ -5,7 +5,9 @@ export default StyleSheet.create({
 
     container:{
         flex: 1,
-        backgroundColor: '#fff'
+        justifyContent: 'space-between',
+        alignItems: "center",
+        backgroundColor: '#fff',
     },
 
     scrollContainer:{
@@ -14,25 +16,34 @@ export default StyleSheet.create({
         width: '100%'
     },
 
-    topContainer:{
-        width: '100%',
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
+    
+    topContainer: {
+        position: "absolute",
+        backgroundColor: 'rgba(255,255,255,0.8)',
+        width: 60,
+        height: 60,
+        left: 20,
+        top: 30,
+        justifyContent: 'center',
         alignItems: 'center',
+        right: 20,
+        bottom: 30,
+        borderRadius: 10,
 
     },
 
-    titulo:{
-        marginLeft: 30,
+    titulo: {
         fontSize: 25,
-        color: '#1E90FF',
-        fontWeight: 'bold',
+        fontFamily: 'Roboto-Bold',
+        color: '#FFF',
+        marginLeft: 40,
     },
 
     imagem:{
         width: '100%',
         height: '100%',
+        borderBottomLeftRadius:10,
+        borderBottomRightRadius: 10,
     },
 
     imagemContainer:{
@@ -44,21 +55,19 @@ export default StyleSheet.create({
     },
 
     detalhesContainer:{
-        width: '100%',
         padding: 10,
-        justifyContent: "space-between",
-        elevation: 5,
         backgroundColor: '#fff',
     },
 
     nomeCidade:{
         fontSize: 25,
-        fontWeight: "bold",
+        fontFamily: 'Recursive-Black',
     },
 
     enderecoCidade:{
         fontSize: 20,
-        fontWeight: "bold",
+        marginBottom: 10,
+        fontFamily: 'Recursive-Black',
         color: 'gray'
     },
 
@@ -95,12 +104,21 @@ export default StyleSheet.create({
 
     descricaoContainer:{
         padding: 10,
-        marginBottom: 20,
     },
 
     cabecalho:{
+        width: '100%',
+        color: '#455A64',
         marginBottom: 10,
-        fontSize: 20,
+        fontSize: 25,
+        fontWeight: "bold",
+    },
+
+    cabecalhoII:{
+        width: '96%',
+        color: '#455A64',
+        marginBottom: 10,
+        fontSize: 25,
         fontWeight: "bold",
     },
     
@@ -108,40 +126,15 @@ export default StyleSheet.create({
         textAlign: "justify",
         fontSize: 20,
         color: 'gray',
-        fontWeight: "bold",
+        fontFamily: "Recursive-Medium",
     },
 
     atrativosContainer:{
         justifyContent: 'space-between',
+        alignItems: "center",
+        padding: 1,
+        height: '50%',
         marginBottom: 10,
-    },
-
-    atrativoFotoContainer:{
-        height: 200,
-        width: '100%',
-        borderRadius: 20,
-        marginBottom: 5,
-    },
-
-    atrativoButtom:{
-        height: 260,
-        width: 300,
-        borderRadius: 20,
-        marginRight: 25,
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        backgroundColor: '#FFF',
-        elevation: 5,
-    },
-
-    atrativoDetalhe:{
-        justifyContent: 'space-between',
-        alignItems:"center",
-        flexDirection: 'row',
-        paddingHorizontal: 10,
-        width: '100%',
-        marginBottom: 20,
-        
     },
 
 

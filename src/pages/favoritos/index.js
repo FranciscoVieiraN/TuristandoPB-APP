@@ -10,51 +10,9 @@ import styles from './style';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native'
 import SearchBar from 'react-native-search-bar';
+import {Cards} from '../../components/Cards'
 
 
-
-const Item = ({ item, onPress}) => (
-    <TouchableOpacity 
-    onPress={onPress}
-    style={styles.atrativoButtom}>
-        <Image 
-        source={{uri: item.images[0].url}}
-        style={styles.atrativoFotoContainer}/>
-        
-        <View style={styles.atrativoDetalhe}>
-            <View>
-
-                <View style={{
-                    flexDirection: "row", 
-                    width: '100%', 
-                    justifyContent: "space-between", 
-                    alignItems: "center",}}>
-
-                <Text numberOfLines={1} style={{
-                    fontFamily: 'Recursive-Black',
-                    fontSize: 20,
-                    marginBottom: 10,
-                    color: '#212121',}}>
-
-                    {item.title}
-
-                </Text>
-
-
-                </View>
-
-                <Text numberOfLines={3} style={styles.descricao}>
-                    {item.descricao}
-                
-                </Text>
-            
-            </View>
-
-        </View>    
-    
-    </TouchableOpacity>
-    
-);
 
 export default function Favoritos(){
 
@@ -216,7 +174,7 @@ export default function Favoritos(){
 
     const renderItem = ({ item }) => {
         return (
-            <Item
+            <Cards
                 item={item}
                 onPress={() => navigateToAtrativo(item)}
 
@@ -266,26 +224,30 @@ export default function Favoritos(){
                 </View>
                 
 
+                <View style={{
+                    backgroundColor: 'lightgray',
+                    borderRadius: 20,
+                    padding: 2,
+                    width: '98%',
+                    margin: 5}}>
+
                 <SearchBar        
                 placeholder="Atrativo/Região..."
-                textColor={'black'}        
+                textColor={'black'}
+                lightTheme        
+                round        
                 onChangeText={text => searchFilterFunction(text)}
                 autoCorrect={false}
-                lightTheme        
-                round
-                style={{width: '100%', 
-                height: 50, 
-                elevation: 10,
-                backgroundColor: '#fff',
-                borderRadius: 100, 
-
-                }}           
+                style={{width: '100%', height: 40, borderRadius: 10,}}
                 />
+
+                </View>
+
 
                 <View style={styles.conteudoContainer}>
 
                     <Text style={styles.cabecalhoII}>
-                                Seus favoritos 
+                                Seus atrativos favoritos 
                             
                     </Text>
 

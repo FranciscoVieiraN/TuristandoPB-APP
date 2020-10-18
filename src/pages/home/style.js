@@ -8,9 +8,12 @@ export default StyleSheet.create({
     },
 
     topContainer: {
-        padding: 10,
+        padding: 20,
         paddingHorizontal: 20,
+        marginBottom: 20,
         width: '100%',
+        borderBottomLeftRadius: 7,
+        borderBottomRightRadius: 7,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -20,54 +23,43 @@ export default StyleSheet.create({
     },
 
     title: {
-        fontSize: 25,
-        fontFamily: 'Roboto-Bold',
+        fontSize: 40,
+        fontFamily: 'Recursive-Black',
         color: '#FFF',
-        marginLeft: 40,
     },
 
-    cabecalhoContainer:{
-        padding: 10,
+    tituloIIContainer:{
+        paddingHorizontal: 20,
         width: '100%',
-        
+        marginBottom: 20,
         justifyContent: 'flex-start',
-        backgroundColor: '#0D47A1',
-        elevation: 7,
+        backgroundColor: '#fff',
 
     },
 
-    cabecalho:{
-        fontSize: 25,
+    tituloII:{
+        fontSize: 30,
         fontFamily: 'Recursive-ExtraBold',
-        borderBottomColor: '#fff',
-        borderBottomWidth: 2,
-        color: '#FFF',
+        color: '#0D47A1',
     },
 
     optionsContainer: {
-        backgroundColor: '#0D47A1',
+        backgroundColor: '#fff',
         height: 100,
-        borderBottomEndRadius: 10,
-        borderBottomStartRadius: 10,
-        padding: 20,
+        paddingHorizontal: 20,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        shadowOffset:{
-            width: 0,
-            height: 60,
-        },
-        elevation: 7,
     },
 
     optionButtonContainer: {
-        backgroundColor: '#fff',
-        borderRadius: 20,
+        backgroundColor: '#1E90FF',
+        borderRadius: 10,
         padding: 7,
-        height: 45,
-        width: 100,
+        paddingHorizontal: 20,
         alignItems: 'center',
-        justifyContent: 'center',
-        elevation: 10,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        marginBottom: 5,
 
     },
 
@@ -79,67 +71,17 @@ export default StyleSheet.create({
     
     conteudoContainer:{
         flex:1,
-        padding: 5,
         alignItems: 'center',
     },
 
     cabecalhoII:{
   
-        fontSize: 25, 
+        fontSize: 30, 
         fontFamily: 'Roboto-Bold',
         width: '98%',
-        borderBottomWidth: 2,
-        borderColor: '#455A64',
-        marginTop: 30,
+        textAlign: "center",
         marginBottom: 15,
         color: '#455A64'
     },
-
-    atrativosContainer:{
-        justifyContent: 'space-between',
-        padding: 5,
-        marginBottom: 10,
-
-    },
-
-    atrativoFotoContainer:{
-        height: 200,
-        width: '100%',
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        marginBottom: 5,
-    },
-
-    atrativoButtom:{
-        height:330,
-        width: 330,
-        borderRadius: 20,
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        backgroundColor: '#FFF',
-        elevation: 5,
-    },
-
-    atrativoDetalhe:{
-        justifyContent: 'space-between',
-        alignItems:"center",
-        flexDirection: 'row',
-        paddingHorizontal: 10,
-        width: '100%',
-        
-    },
-
-    descricao:{
-        fontSize: 15,
-        fontFamily: 'Recursive-ExtraBold',
-        color: '#455A64',
-    }
-
-
-
-
-
-
-
 
 });

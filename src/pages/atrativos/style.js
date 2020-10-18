@@ -4,19 +4,17 @@ export default StyleSheet.create({
 
     container:{
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor:'#fff',
     },
 
     topContainer: {
-        padding: 10,
         width: '100%',
-        paddingHorizontal: 20,
-        marginBottom: 20,
+        marginBottom: 10,
+        marginTop: 10,
+        padding: 20,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#0D47A1',
-        elevation: 7,
 
     },
 
@@ -29,7 +27,6 @@ export default StyleSheet.create({
 
     conteudoContainer:{
         flex:1,
-        padding: 5,
         alignItems: 'center',
     },
 
@@ -37,19 +34,8 @@ export default StyleSheet.create({
         fontSize: 30, 
         fontFamily: 'Roboto-Bold',
         width: '98%',
-        borderBottomWidth: 2,
-        borderColor: '#455A64',
-        marginTop: 30,
         marginBottom: 15,
-        color: '#455A64'
-    },
-
-    atrativosProximosContainer:{
-        justifyContent: 'space-between',
-        alignItems: "center",
-        padding: 5,
-        marginBottom: 10,
-
+        color: '#0D47A1'
     },
 
     atrativosContainer:{
@@ -62,14 +48,14 @@ export default StyleSheet.create({
         height: '100%',
         width: '100%',
         position: "absolute",
-        borderRadius: 20,
+        borderRadius: 10,
         marginBottom: 5,
     },
 
     atrativoButtom:{
         height:230,
         width: 188,
-        borderRadius: 20,
+        borderRadius: 10,
         alignItems: 'flex-end',
         justifyContent: 'flex-end',
         flexDirection: "column",
@@ -101,16 +87,4 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         justifyContent: 'center',
     },
-
-    searchBoxContainer:{
-        width: 350,
-        height: 43,
-        borderRadius: 50,
-        marginBottom: 30,
-        backgroundColor: '#cecece',
-        padding: 20,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    }
 })

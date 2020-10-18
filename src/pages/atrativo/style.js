@@ -10,14 +10,17 @@ export default StyleSheet.create({
     },
 
     topContainer: {
-        padding: 10,
-        width: '100%',
-        paddingHorizontal: 10,
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
+        position: "absolute",
+        backgroundColor: 'rgba(255,255,255,0.8)',
+        width: 60,
+        height: 60,
+        left: 20,
+        top: 30,
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#0D47A1',
-        elevation: 7,
+        right: 20,
+        bottom: 30,
+        borderRadius: 10,
 
     },
 
@@ -31,6 +34,8 @@ export default StyleSheet.create({
     imagem:{
         width: '100%',
         height: '100%',
+        borderBottomRightRadius: 10,
+        borderBottomLeftRadius: 10,
     },
 
     imagemContainer:{
@@ -42,12 +47,12 @@ export default StyleSheet.create({
     },
 
     detalhesContainer:{
-        padding: 10,
+        padding: 20,
         backgroundColor: '#fff',
     },
 
     nomeAtrativo:{
-        fontSize: 25,
+        fontSize: 30,
         fontFamily: 'Recursive-Black',
     },
 
@@ -61,18 +66,16 @@ export default StyleSheet.create({
     buttonsContainer:{
         width: '100%',
         justifyContent: 'flex-start',
-        padding: 10,
     },
 
     verNoMapaButtom:{
         borderRadius:10,
         width: 290,
-        height: 90,
-        backgroundColor:'#fff',
+        height: 50,
+        backgroundColor:'#1E90FF',
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        elevation:5,
     },
 
     avaliacaoContainer:{
@@ -89,13 +92,11 @@ export default StyleSheet.create({
     },
 
     descricaoContainer:{
-        padding: 10,
+        padding: 20,
     },
 
     cabecalho:{
         width: '100%',
-        borderBottomWidth: 2,
-        borderColor: '#455A64',
         color: '#455A64',
         marginBottom: 10,
         fontSize: 25,
@@ -110,7 +111,7 @@ export default StyleSheet.create({
     },
 
     informacoesContainer:{
-        padding: 10,
+        padding: 20,
         borderBottomColor: '#DCDCDC',
         borderBottomWidth: 1,
 
@@ -120,12 +121,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 10,
-    },
-
-
-    mapView:{
-        height: 200,
-        width: '100%',
     },
 
 

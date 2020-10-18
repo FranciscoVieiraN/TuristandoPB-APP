@@ -11,7 +11,6 @@ export default StyleSheet.create({
         padding: 10,
         width: '100%',
         paddingHorizontal: 20,
-        marginBottom: 20,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -30,7 +29,7 @@ export default StyleSheet.create({
     conteudoContainer:{
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20,
+        margin: 20,
     },
 
     textoContainer:{
@@ -39,6 +38,15 @@ export default StyleSheet.create({
         color: 'gray',
         fontFamily: "Recursive-Medium",
 
+    },
+
+    cabecalho:{
+        borderBottomWidth: 2,
+        borderColor: '#455A64',
+        color: '#455A64',
+        marginBottom: 10,
+        fontSize: 25,
+        fontWeight: "bold",
     },
 
 
