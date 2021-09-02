@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import styles from './style';
-import Icon from 'react-native-vector-icons/AntDesign';
+import  Icons  from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
-import {Cards} from '../../components/Cards'
-import {atrativos} from '../../components/Objects/Atrativos'
-
+import {Cards} from '../../components/Cards';
+import {atrativos} from '../../components/Objects/Atrativos';
 
 
 export default function Home(){
@@ -21,6 +20,10 @@ export default function Home(){
 
     function navigationToTipoRoteiro(){
         navigation.navigate('Tipo_roteiro')
+    }
+
+    function navigationToRoteiroCidades(){
+        navigation.navigate('Roteiro_cidades')
     }
 
     function navigationToAtrativo(atrativo){
@@ -64,7 +67,7 @@ export default function Home(){
         <View style={styles.container}>
             
 
-                <View style={styles.topContainer}>
+                {/* <View style={styles.topContainer}>
                     <View style={{
                         flexDirection: "row",
                         alignItems: "center",
@@ -79,33 +82,14 @@ export default function Home(){
                         TuristandoPB
                         </Text>
                     </View>
-                    
-
-
-                </View>
+                </View> */}
 
                 <View style={styles.tituloIIContainer}>
                     <Text style={styles.tituloII}>Vamos turistar!</Text>
 
                     <TouchableOpacity 
-                    onPress={()=>navigationToTipoRoteiro()}  
-                    style={styles.optionButtonContainer}>
-                        
-                        <Text 
-                        style={{fontSize: 20,
-                        color: '#fff',
-                        fontFamily: 'Recursive-ExtraBold'}}>
-                            
-                            Programar roteiro
-                    
-                        </Text>
-
-                        <Icon name='find' color={'white'} size={25}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity 
-                    onPress={()=>navigationToAtrativos()}  
-                    style={styles.optionButtonContainer}>
+                        onPress={()=>navigationToAtrativos()}  
+                        style={styles.optionButtonContainer}>
                         
                         <Text 
                         style={{fontSize: 20,
@@ -116,16 +100,27 @@ export default function Home(){
                     
                         </Text>
 
-                        <Icon name='picture' color={'white'} size={25}/>
+                        <Icons name='beach-access' color={'white'} size={25}/>
                     </TouchableOpacity>
+
+                    <TouchableOpacity 
+                        onPress={()=>navigationToRoteiroCidades()}  
+                        style={styles.optionButtonContainer}>
+                        
+                        <Text 
+                        style={{fontSize: 20,
+                        color: '#fff',
+                        fontFamily: 'Poppins-SemiBold'}}>
+                            
+                            Cidades
+                    
+                        </Text>
+
+                        <Icons name='location-city' color={'white'} size={25}/>
+                    </TouchableOpacity>
+
+                    
                 </View>
-
-
-
-
-
-
-
 
 
 
@@ -136,9 +131,7 @@ export default function Home(){
                     </Text>
 
 
-
-
-                    <FlatList contentContainerStyle={{padding: 20,}}
+                    <FlatList 
                             data={data}
                             vertical
                             showsVerticalScrollIndicator={false}
@@ -156,16 +149,7 @@ export default function Home(){
                     />
 
 
-                
-                    
-
                 </View>
-
-
-            
-
-
-
 
         </View>
     );

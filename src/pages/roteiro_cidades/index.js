@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, Route, ImageBackground } from 'rea
 import { TextInput, FlatList } from 'react-native-gesture-handler';
 import styles from './style';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import  Icons  from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import SearchBar from 'react-native-search-bar'
 
@@ -22,7 +23,7 @@ export default function Roteiro_cidades(){
 
     const navigation = useNavigation();
     const route = useRoute();
-    const idItem = route.params.id;
+    //const idItem = route.params.id;
     const [data, setData] = React.useState([{
         id: "1",
         title: "João Pessoa",
@@ -162,7 +163,16 @@ export default function Roteiro_cidades(){
 
 
     function navigateToCidade(cidade){
-        navigation.navigate('Cidade', {idItem, cidade});
+        navigation.navigate('Cidade', { cidade});
+        //navigation.navigate('Cidade', {idItem, cidade});
+    }
+
+    function navigationToAtrativos(){
+        navigation.navigate('Atrativos')
+    }
+
+    function navigationToHome(){
+        navigation.navigate('Home')
     }
 
     const renderItem = ({ item }) => {
@@ -187,33 +197,44 @@ export default function Roteiro_cidades(){
         <View style={styles.container}>
              <View style={styles.topContainer}>
 
-                <TouchableOpacity
-                onPress={()=>navigation.goBack()}>
-                    <Icon name='arrow-left' color={'#0D47A1'} size={45}/>
+                <TouchableOpacity 
+                    onPress={()=>navigationToRoteiroCidades()}  
+                    style={styles.optionButtonContainer}>
+                        
+                    <Text 
+                    style={{fontSize: 20,
+                    color: '#fff',
+                    fontFamily: 'Recursive-ExtraBold'}}>
+                            
+                        Cidades
+                    
+                    </Text>
+
+                    <Icons name='location-city' color={'white'} size={25}/>
                 </TouchableOpacity>
 
             </View>
 
-            <Text style={styles.titleII} >Escolha a cidade onde deseja realizar seu passeio!</Text>
+            <Text style={styles.titleII} >Sugestões...</Text>
 
             <View style={{
                     alignItems: "center",
                     justifyContent: "center",
-                    backgroundColor: 'lightgray',
-                    borderRadius: 20,
+                    backgroundColor: '#1C4491',
+                    borderRadius: 10,
                     marginBottom: 10,
                     padding: 2,
                     width: '90%',
                     margin: 5}}>
 
                 <SearchBar        
-                placeholder="Pesquisar cidade..."
-                textColor={'black'}
+                placeholder="Para onde você quer ir?"
+                textColor={'white'}
                 lightTheme        
                 round        
                 onChangeText={text => searchFilterFunction(text)}
                 autoCorrect={false}
-                style={{width: '100%', height: 40, borderRadius: 10,}}
+                style={{width: '100%', height: 45, borderRadius: 10}}
                 />
             </View>
 
@@ -236,12 +257,6 @@ export default function Roteiro_cidades(){
 
             </View>
             
- 
- 
- 
         </View>
-
-
     );
-
 }

@@ -9,7 +9,7 @@ import {
     FlatList, 
     Dimensions} from 'react-native';
 import styles from './style';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import  Icons  from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native'
 import SearchBar from 'react-native-search-bar';
 import {Cards} from '../../components/Cards'
@@ -23,6 +23,14 @@ export default function Atrativos(){
 
     function navigateToAtrativo(atrativo){
         navigation.navigate('Atrativo', {atrativo});
+    };
+
+    function navigationToRoteiroCidades(){
+        navigation.navigate('Roteiro_cidades')
+    };
+
+    function navigationToHome(){
+        navigation.navigate('Home')
     };
     
     const [loading ,setLoading] = React.useState(false);
@@ -203,11 +211,6 @@ export default function Atrativos(){
         )
         
     }
-      
-
-
-
-
 
 
     return(
@@ -216,20 +219,30 @@ export default function Atrativos(){
 
                 <View style={styles.topContainer}>
 
-                    <TouchableOpacity
-                    onPress={()=>navigation.goBack()}>
-                        <Icon name='arrow-left' color={'#0D47A1'} size={45}/>
+                    <TouchableOpacity 
+                        onPress={()=>{}}  
+                        style={styles.optionButtonContainer}>
+                        
+                        <Text 
+                        style={{fontSize: 20,
+                        color: '#fff',
+                        fontFamily: 'Recursive-ExtraBold'}}>
+                            
+                            Atrativos
+                    
+                        </Text>
+
+                        <Icons name='beach-access' color={'white'} size={25}/>
                     </TouchableOpacity>
                     
                 </View>
 
                 <View style={{
-                            paddingHorizontal: 20, 
+                            paddingHorizontal: 24, 
                             width: '100%'}}>
 
                             <Text style={styles.cabecalhoII}>
-                                        O que você gostaria de visitar hoje? 
-                                    
+                                        Sugestões...
                             </Text>
 
                 </View>
@@ -238,8 +251,8 @@ export default function Atrativos(){
                     <View style={styles.conteudoContainer}>
 
                         <View style={{
-                        backgroundColor: 'lightgray',
-                        borderRadius: 20,
+                        backgroundColor: '#1C4491',
+                        borderRadius: 10,
                         marginBottom: 10,
                         alignItems: "center",
                         justifyContent: "center",
@@ -247,13 +260,13 @@ export default function Atrativos(){
                         margin: 5}}>
 
                             <SearchBar        
-                            placeholder="Pesquisar atrativo..."
-                            textColor={'black'}
+                            placeholder="Para onde você quer ir?"
+                            textColor={'white'}
                             lightTheme        
                             round        
                             onChangeText={text => searchFilterFunction(text)}
                             autoCorrect={false}
-                            style={{width: '100%', height: 40, borderRadius: 10,}}
+                            style={{width: '98%', height: 45, borderRadius: 10}}
                             />
 
                         </View>
@@ -277,17 +290,9 @@ export default function Atrativos(){
                         />
                         
 
-                    </View>
-
-                
-                                 
-        
+                    </View>             
 
         </View>
-
-
-
-
 
     );
 

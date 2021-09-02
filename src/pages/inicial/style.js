@@ -4,9 +4,10 @@ export default StyleSheet.create({
     container:{
         flex: 1,
         padding: 20,
-        backgroundColor: 'rgba(30,136, 229, 0.7)',
+        paddingTop: 150,
+        backgroundColor: '#1C4491',
         alignItems: "center",
-        justifyContent: "space-between",
+        
     },
 
     name:{
@@ -42,9 +43,16 @@ export default StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
 
+    },
+    startButton: {
+        backgroundColor: '#F5F5F5',
+        width: 200,
+        height: 47.37,
+        borderRadius: 23.68,
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        top: 470
     }
 
-
-
-    
-})
+});

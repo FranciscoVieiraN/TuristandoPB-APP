@@ -1,9 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
 
     container: {
-        flex: 1,
+        flex: 1.,
         backgroundColor: '#fff'
     },
 
@@ -18,8 +18,7 @@ export default StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: '#0D47A1',
-        elevation: 7,
-
+        elevation: 7
     },
 
     title: {
@@ -29,8 +28,9 @@ export default StyleSheet.create({
     },
 
     tituloIIContainer:{
-        paddingHorizontal: 20,
+        paddingHorizontal: 24,
         width: '100%',
+        marginTop: 8,
         marginBottom: 20,
         justifyContent: 'flex-start',
         backgroundColor: '#fff',
@@ -38,9 +38,10 @@ export default StyleSheet.create({
     },
 
     tituloII:{
-        fontSize: 30,
-        fontFamily: 'Recursive-ExtraBold',
-        color: '#0D47A1',
+        fontSize: 18,
+        fontFamily: 'Poppins-SemiBold',
+        color: '#1C4491',
+        marginBottom: 14,
     },
 
     optionsContainer: {
@@ -52,7 +53,7 @@ export default StyleSheet.create({
     },
 
     optionButtonContainer: {
-        backgroundColor: '#1E90FF',
+        backgroundColor: '#1C4491',
         borderRadius: 10,
         padding: 7,
         paddingHorizontal: 20,
@@ -72,16 +73,33 @@ export default StyleSheet.create({
     conteudoContainer:{
         flex:1,
         alignItems: 'center',
+        paddingHorizontal: 24
     },
 
     cabecalhoII:{
   
-        fontSize: 30, 
+        fontSize: 18,
         fontFamily: 'Roboto-Bold',
         width: '98%',
-        textAlign: "center",
+        textAlign: "left",
         marginBottom: 15,
-        color: '#455A64'
+        color: '#1C4491'
     },
 
-});
+    menuBar: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: '#1C4491',
+        height: 54,
+        width: '100%'
+    },
+
+    buttonBar: {
+        width: 43,
+        height: 35,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 8,
+    }
+})

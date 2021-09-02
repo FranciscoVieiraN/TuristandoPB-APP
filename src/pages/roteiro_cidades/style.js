@@ -12,7 +12,7 @@ export default StyleSheet.create({
         width: '100%',
         marginBottom: 10,
         marginTop: 10,
-        padding: 20,
+        padding: 24,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -21,7 +21,7 @@ export default StyleSheet.create({
 
     titulo: {
         fontSize: 25,
-        fontFamily: 'Roboto-Bold',
+        fontFamily: 'Poppins-SemiBold',
         color: '#FFF',
         marginLeft: 40,
     },
@@ -36,11 +36,12 @@ export default StyleSheet.create({
     },
 
     titleII: {
-        fontSize: 30, 
-        fontFamily: 'Roboto-Bold',
+        fontSize: 25, 
+        fontFamily: 'Poppins-SemiBold',
         width: '90%',
         marginBottom: 15,
-        color: '#0D47A1'
+        color: '#1C4491',
+        marginLeft: 24
     },
 
     opcoesCidadeContainer: {
@@ -85,7 +86,17 @@ export default StyleSheet.create({
         padding: 5,
     },
 
+    optionButtonContainer: {
+        backgroundColor: '#1C4491',
+        borderRadius: 10,
+        padding: 7,
+        paddingHorizontal: 20,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        marginBottom: 5,
+        width: '100%',
 
-
+    },
 
 })

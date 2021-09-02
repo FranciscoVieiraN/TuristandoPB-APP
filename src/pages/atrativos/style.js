@@ -11,7 +11,7 @@ export default StyleSheet.create({
         width: '100%',
         marginBottom: 10,
         marginTop: 10,
-        padding: 20,
+        padding: 24,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -31,11 +31,11 @@ export default StyleSheet.create({
     },
 
     cabecalhoII:{
-        fontSize: 30, 
-        fontFamily: 'Roboto-Bold',
+        fontSize: 20, 
+        fontFamily: 'Poppins-SemiBold',
         width: '98%',
         marginBottom: 15,
-        color: '#0D47A1'
+        color: '#1C4491'
     },
 
     atrativosContainer:{
@@ -86,5 +86,35 @@ export default StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold',
         justifyContent: 'center',
+    },
+
+    menuBar: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: '#1C4491',
+        height: 54,
+        width: '100%'
+    },
+
+    buttonBar: {
+        width: 43,
+        height: 35,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 8,
+    },
+
+    optionButtonContainer: {
+        backgroundColor: '#1C4491',
+        borderRadius: 10,
+        padding: 7,
+        paddingHorizontal: 20,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        marginBottom: 5,
+        width: '100%',
+
     },
 })
