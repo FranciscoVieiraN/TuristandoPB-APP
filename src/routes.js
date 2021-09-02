@@ -1,59 +1,86 @@
-import React from 'react';
+import * as React from 'react';
+import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const AppStack = createStackNavigator();
-const AppDrawer = createDrawerNavigator();
+
+const Tab = createBottomTabNavigator();
 
 import Inicial from './pages/inicial';
-import Cadastro from './pages/cadastro';
-import Login from './pages/login';
 import Home from './pages/home';
-import Tipo_roteiro from './pages/tipo_roteiro';
 import Roteiro_cidades from './pages/roteiro_cidades';
 import Atrativos from './pages/atrativos';
-import QuemSomos from './pages/quem-somos';
-import Favoritos from './pages/favoritos';
 import Cidade from './pages/cidade';
 import Atrativo from './pages/atrativo';
-import Map from './pages/map';
 
+const HomeStack = createNativeStackNavigator();
 
-function DrawerPages(){
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator screenOptions = {{headerShown:false}}>
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Atrativos" component={Atrativos} />
+      <HomeStack.Screen name="Atrativo" component={Atrativo} />
+      <HomeStack.Screen name="Roteiro_cidades" component={Roteiro_cidades} />
+    </HomeStack.Navigator>
+  );
+}
+
+const AtrativoStack = createNativeStackNavigator();
+
+function AtrativoStackScreen() {
     return (
-
-        
-            <AppDrawer.Navigator>
-                
-                <AppDrawer.Screen name = "Favoritos" component = {Favoritos}/>
-                
-                
-            </AppDrawer.Navigator >  
+      <AtrativoStack.Navigator screenOptions = {{headerShown:false}}>
+        <AtrativoStack.Screen name="Atrativos" component={Atrativos} />
+        <AtrativoStack.Screen name="Atrativo" component={Atrativo} />
+      </AtrativoStack.Navigator>
     );
 }
 
-export default function StackPages(){
-    return(
-        <NavigationContainer>
-            <AppStack.Navigator screenOptions = {{headerShown:false}}>
-                <AppDrawer.Screen name = "Home" component = {Home}/>
-                <AppDrawer.Screen name = "Atrativos" component = {Atrativos}/>   
-                <AppDrawer.Screen name = "QuemSomos" component = {QuemSomos}/>
-                <AppStack.Screen name = "Tipo_roteiro" component = {Tipo_roteiro} />
-                <AppStack.Screen name = "Roteiro_cidades" component = {Roteiro_cidades}/>
-                <AppStack.Screen name = "Cidade" component = {Cidade}/>
-                <AppStack.Screen name = "Atrativo" component = {Atrativo}/>
-                <AppStack.Screen name = "Map" component = {Map}/>
-                
-                
-            </AppStack.Navigator>
-        </NavigationContainer>
-    );
+const CidadeStack = createNativeStackNavigator();
+
+function CidadeStackScreen() {
+  return (
+    <CidadeStack.Navigator screenOptions = {{headerShown:false}}>
+      <CidadeStack.Screen name="Roteiro_cidades" component={Roteiro_cidades} />
+      <CidadeStack.Screen name="Cidade" component={Cidade} />
+    </CidadeStack.Navigator>
+  );
 }
 
 
+export default function Pages() {
+    return (
+      <NavigationContainer>
+        <Tab.Navigator 
+          screenOptions = {{
+            headerShown:false,
+            tabBarShowLabel: false,
+            tabBarStyle: [{
+              positoin: 'absolute',
+              backgroundColor: '#1C4491'}]}}
+          >
+          <Tab.Screen name="HomeTab" component={HomeStackScreen} />
+          <Tab.Screen name="AtrativosTab" component={AtrativoStackScreen} />
+          <Tab.Screen name="Roteiro_cidadesTab" component={CidadeStackScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    );
+};
 
-
-
-
+//shift+alt+A
+/* export default function StackPages(){
+  return(
+      <NavigationContainer>
+          <AppStack.Navigator screenOptions = {{headerShown:false}}>
+              <AppStack.Screen name = "Inicial" component = {Inicial}/>
+              <AppStack.Screen name = "Home" component = {Home}/>
+              <AppStack.Screen name = "Atrativos" component = {Atrativos}/>                
+              <AppStack.Screen name = "Roteiro_cidades" component = {Roteiro_cidades}/>
+              <AppStack.Screen name = "Cidade" component = {Cidade}/>
+              <AppStack.Screen name = "Atrativo" component = {Atrativo}/>  
+          </AppStack.Navigator>
+      </NavigationContainer>
+  );
+} */
