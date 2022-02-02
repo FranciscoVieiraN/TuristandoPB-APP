@@ -1,10 +1,12 @@
 import React from 'react';
 import {
     StyleSheet, 
-    TouchableOpacity, 
+    TouchableOpacity,
     Image, 
     View, 
     Text} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import colors from '../../styles/colors';
 
 export const Cards = ({ item, onPress}) => (
     <TouchableOpacity 
@@ -26,7 +28,7 @@ export const Cards = ({ item, onPress}) => (
                 <Text numberOfLines={1} style={{
                     fontFamily: 'Recursive-Black',
                     fontSize: 25,
-                    color: '#212121',
+                    color: colors.main,
                     width: '100%',
                     }}>
 
@@ -36,11 +38,12 @@ export const Cards = ({ item, onPress}) => (
 
 
                 </View>
-
-                <Text numberOfLines={1} style={styles.endereco}>
-                    {item.endereco}
-                
-                </Text>
+                <View style={{ flexDirection: 'row', marginTop: 8, marginBottom: 20 }}>
+                    <Icon name='explore' color='#3EA7EF' size={25} style={{marginRight: 20}} />
+                    <Text numberOfLines={1} style={styles.endereco}>
+                        {item.endereco}
+                    </Text>
+                </View>
             
             </View>
 
@@ -80,6 +83,6 @@ const styles = StyleSheet.create({
     endereco:{
         fontSize: 15,
         fontFamily: 'Recursive-ExtraBold',
-        color: '#455A64',
+        color: colors.main,
     }
 });

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import styles from './style';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Swiper from 'react-native-swiper';
-import {Cards} from '../../components/Cards'
+import {Cards} from '../../components/Cards';
+import { LittleCard } from '../../components/Little_Card';
 
 
 
@@ -89,20 +90,15 @@ export default function Cidade(){
 
     const cidade = route.params.cidade;
 
-    function navigateGoBack(){
-        navigation.goBack();
-    }
-
     function navigationToAtrativo(atrativo){
         navigation.navigate('Atrativo', {atrativo})
     }
 
     const renderItem = ({ item }) => {
         return (
-            <Cards
+            <LittleCard 
                 item={item}
                 onPress={() => navigationToAtrativo(item)}
-
             />
         );
     };
@@ -127,12 +123,6 @@ export default function Cidade(){
                         <Image key={imagem.id} style={styles.imagem} source={{uri: imagem.url}}/>
                     ))}
                 </Swiper>
-
-                <TouchableOpacity
-                style={styles.topContainer}
-                onPress={()=>navigation.goBack()}>
-                    <Icon name='arrow-left' color={'#0D47A1'} size={45}/>
-                </TouchableOpacity>
                 
             </View>
             
@@ -143,10 +133,12 @@ export default function Cidade(){
                         <Text style={styles.nomeCidade}>
                             {cidade.title} {'\n'}
                         </Text>
-
-                        <Text style={styles.enderecoCidade}>
-                            {cidade.endereco}
-                        </Text>
+                        <View style={{ flexDirection: 'row', marginTop: 8, marginBottom: 20 }}>
+                            <Icon name='explore' color='#3EA7EF' size={25} style={{marginRight: 20}} />
+                            <Text style={styles.enderecoCidade}>
+                                {cidade.endereco}
+                            </Text>
+                        </View>
                     </Text>
                 </View>
 
@@ -178,19 +170,6 @@ export default function Cidade(){
                     
 
                 </View>
-
-
-
-                
-
-
-
-            
-
-
-
-
-
 
 
         </ScrollView>

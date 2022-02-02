@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../styles/colors';
 
 export default StyleSheet.create({
 
@@ -12,7 +13,7 @@ export default StyleSheet.create({
         marginBottom: 10,
         marginTop: 10,
         padding: 24,
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
 
@@ -35,7 +36,7 @@ export default StyleSheet.create({
         fontFamily: 'Poppins-SemiBold',
         width: '98%',
         marginBottom: 15,
-        color: '#1C4491'
+        color: colors.main
     },
 
     atrativosContainer:{
@@ -92,7 +93,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: '#1C4491',
+        backgroundColor: colors.main,
         height: 54,
         width: '100%'
     },
@@ -106,15 +107,27 @@ export default StyleSheet.create({
     },
 
     optionButtonContainer: {
-        backgroundColor: '#1C4491',
+        backgroundColor: colors.main,
         borderRadius: 10,
         padding: 7,
         paddingHorizontal: 20,
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        marginBottom: 5,
+        marginBottom: 20,
         width: '100%',
 
     },
+
+    viewContainer: {
+        backgroundColor: colors.main,
+        borderRadius: 10,
+        padding: 7,
+        paddingHorizontal: 20,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        marginBottom: 10,
+        width: '100%',
+    }
 })

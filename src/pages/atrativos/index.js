@@ -7,12 +7,18 @@ import {
     TouchableOpacity, 
     ScrollView, 
     FlatList, 
-    Dimensions} from 'react-native';
+    Dimensions,
+    Modal,
+    Alert} from 'react-native';
 import styles from './style';
 import  Icons  from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native'
 import SearchBar from 'react-native-search-bar';
-import {Cards} from '../../components/Cards'
+import colors from '../../styles/colors';
+import { LittleCard } from '../../components/Little_Card';
+import { FilterButton } from '../../components/Filter_Button';
+import { SliderPicker } from 'react-native-slider-picker';
+
 
 
 
@@ -32,13 +38,17 @@ export default function Atrativos(){
     function navigationToHome(){
         navigation.navigate('Home')
     };
-    
+
+    const [modalVisible, setModalVisible] = React.useState(false);
+    const [distancia, setDistancia] = React.useState(500);
+    const [filter, setFilter] = React.useState('todos');  
     const [loading ,setLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
     const [data, setData] = React.useState([{
         id: "1",
         title: "Farol de Cabo Branco",
         endereco: "João Pessoa, PB",
+        tipo: "Atrativos histórico/culturais",
         descricao: "blablablablablablablablablablablablablablablablablablablablablablablablablablabla",
         telefone: "(83) 98615-0095",
         horarios: "o dia todo",
@@ -63,6 +73,7 @@ export default function Atrativos(){
         id: "2",
         title: "UFPB",
         endereco: "João Pessoa, Castelo Branco",
+        tipo: "Atrativos histórico/culturais",
         descricao: "blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla",
         telefone: "(83) 98615-0095",
         horarios: "o dia todo",
@@ -87,6 +98,7 @@ export default function Atrativos(){
         id: "3",
         title: "Estação Ciências",
         endereco: "João Pessoa, PB",
+        tipo: "Atrativos histórico/culturais",
         descricao: "blablablablablablablablablablablablablablablablablablablablablablablablablablabla",
         telefone: "(83) 98615-0095",
         horarios: "o dia todo",
@@ -113,6 +125,7 @@ export default function Atrativos(){
             id: "1",
             title: "Farol de Cabo Branco",
             endereco: "João Pessoa, PB",
+            tipo: "Atrativos histórico/culturais",
             descricao: "blablablablablablablablablablablablablablablablablablablablablablablablablablabla",
             telefone: "(83) 98615-0095",
             horarios: "o dia todo",
@@ -137,6 +150,7 @@ export default function Atrativos(){
             id: "2",
             title: "UFPB",
             endereco: "João Pessoa, Castelo Branco",
+            tipo: "Atrativos histórico/culturais",
             descricao: "blablablablablablablablablablablablablablablablablablablablablablablablablablabla",
             telefone: "(83) 98615-0095",
             horarios: "o dia todo",
@@ -161,6 +175,7 @@ export default function Atrativos(){
             id: "3",
             title: "Estação Ciências",
             endereco: "João Pessoa, PB",
+            tipo: "Atrativos histórico/culturais",
             descricao: "blablablablablablablablablablablablablablablablablablablablablablablablablablabla",
             telefone: "(83) 98615-0095",
             horarios: "o dia todo",
@@ -185,7 +200,7 @@ export default function Atrativos(){
 
     const renderItem = ({ item }) => {
         return (
-            <Cards
+            <LittleCard
                 item={item}
                 onPress={() => navigateToAtrativo(item)}
 
@@ -193,6 +208,19 @@ export default function Atrativos(){
         );
     };
 
+    const filterButton = (text) => {
+        let newData = [...arrayholder];
+
+        if (text.toLowerCase() === 'todos'){
+            newData = arrayholder;
+        } else if (text.toLowerCase() === 'atrativos naturais') {
+            newData = arrayholder.filter(item => (item.tipo.toLowerCase() == 'atrativos naturais'));
+        } else if (text.toLowerCase() == 'atrativos histórico/culturais') {
+            newData = arrayholder.filter(item => (item.tipo.toLowerCase() === 'atrativos histórico/culturais'));
+        }
+        setData(newData);
+    };
+    
     const searchFilterFunction = text => {    
         const newData = arrayholder.filter(item => {      
             const itemData = `${item.title.toUpperCase()}
@@ -207,9 +235,8 @@ export default function Atrativos(){
 
       const listSeparetor = () => {
         return(
-            <View style={{height: 20,}}></View>
+            <View style={{width: 20,}}></View>
         )
-        
     }
 
 
@@ -219,8 +246,7 @@ export default function Atrativos(){
 
                 <View style={styles.topContainer}>
 
-                    <TouchableOpacity 
-                        onPress={()=>{}}  
+                    <View 
                         style={styles.optionButtonContainer}>
                         
                         <Text 
@@ -233,41 +259,174 @@ export default function Atrativos(){
                         </Text>
 
                         <Icons name='beach-access' color={'white'} size={25}/>
-                    </TouchableOpacity>
-                    
-                </View>
-
-                <View style={{
-                            paddingHorizontal: 24, 
-                            width: '100%'}}>
-
-                            <Text style={styles.cabecalhoII}>
-                                        Sugestões...
-                            </Text>
-
-                </View>
-
-                
-                    <View style={styles.conteudoContainer}>
-
-                        <View style={{
-                        backgroundColor: '#1C4491',
+                    </View>
+                    <View style={{
+                        backgroundColor: colors.main,
                         borderRadius: 10,
                         marginBottom: 10,
                         alignItems: "center",
                         justifyContent: "center",
-                        width: '90%',
+                        width: '100%',
+                        height: 45,
                         margin: 5}}>
 
                             <SearchBar        
                             placeholder="Para onde você quer ir?"
+                            textFieldBackgroundColor={colors.main}
                             textColor={'white'}
-                            lightTheme        
+                            lightTheme
                             round        
                             onChangeText={text => searchFilterFunction(text)}
                             autoCorrect={false}
-                            style={{width: '98%', height: 45, borderRadius: 10}}
+                            style={{width: '93%', height: 45}}
                             />
+
+                    </View>
+
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => setModalVisible(!modalVisible)}
+                    >
+                        <View 
+                            style={{
+                            flex: 1, 
+                            justifyContent: "center", 
+                            alignItems: "center", 
+                            backgroundColor: 'rgba(0,0,0,0.6)'}}
+                        >
+                            <View style={{
+                                margin: 20,
+                                backgroundColor: "white",
+                                borderRadius: 20,
+                                padding: 35,
+                                alignItems: "center",
+                                width: '95%'
+                                }}>
+                                <Text>AAAAAAAAAAAAAAAAAAAAAA</Text>
+                                <SliderPicker 
+                                minLabel={'0 KM'}
+                                midLabel={'500 KM'}
+                                maxLabel={'1000 KM'}
+                                maxValue={500}
+                                defaultValue={distancia}
+                                showFill={true}
+                                callback={position => setDistancia(position)}
+                                labelFontSize={15}
+                                fillColor={'#3EA7EF'}
+                                buttonBackgroundColor={'#3EA7EF'}
+                                buttonBorderColor={"#3EA7EF"}
+                                buttonDimensionsPercentage={3}
+                                />
+                                <TouchableOpacity
+                                    style={{
+                                        backgroundColor: colors.main, 
+                                        borderRadius: 20, 
+                                        width: "60%", 
+                                        alignItems: "center", 
+                                        justifyContent: "center"}}
+                                    onPress={() => setModalVisible(false)}
+                                >
+                                    <Text style={{margin: 8, color: "white", fontSize: 18, fontWeight: "400"}}>Filtrar</Text>
+                                </TouchableOpacity>
+                            </View>
+
+                        </View>
+
+                    </Modal>
+
+                    
+                </View>
+
+                <View style={{ marginTop: -15, marginHorizontal: 20,marginBottom: 5, width: '100%'}}>
+                    <ScrollView 
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    style={{width: '90%', height: 50, backgroundColor: '#fff'}}>
+                        <TouchableOpacity
+                        onPress={() => filterButton('todos')} 
+                        style={{
+                            marginRight: 8,
+                            borderWidth: 2,
+                            borderColor: colors.main,
+                            borderRadius: 25,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flex: 1, 
+                            backgroundColor: '#fff'}}
+                            >
+                            <Text style={{fontSize: 18, fontWeight: '500', color: colors.main, margin: 8}}>
+                                Todos
+                            </Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity 
+                        onPress={() => setModalVisible(true)}
+                        style={{
+                            marginRight: 8,
+                            borderWidth: 2,
+                            borderColor: colors.main,
+                            borderRadius: 25,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flex: 1, 
+                            backgroundColor: '#fff'}}
+                            >
+                            <Text style={{fontSize: 18, fontWeight: '500', color: colors.main, margin: 8}}>
+                                Perto de...
+                            </Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity 
+                        onPress={() => filterButton('atrativos naturais')}
+                        style={{
+                            marginRight: 8,
+                            borderWidth: 2,
+                            borderColor: colors.main,
+                            borderRadius: 25,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flex: 1, 
+                            backgroundColor: '#fff'}}
+                            >
+                            <Text style={{fontSize: 18, fontWeight: '500', color: colors.main, margin: 8}}>
+                                Atrativos naturais
+                            </Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity 
+                        onPress={() => filterButton('atrativos histórico/culturais')}
+                        style={{
+                            marginRight: 8,
+                            borderWidth: 2,
+                            borderColor: colors.main,
+                            borderRadius: 25,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flex: 1, 
+                            backgroundColor: '#fff'}}
+                            >
+                            <Text style={{fontSize: 18, fontWeight: '500', color: colors.main, margin: 8}}>
+                                Atrativos histórico/culturais
+                            </Text>
+                        </TouchableOpacity>
+                    </ScrollView>
+                </View>
+
+
+                
+                    <View style={styles.conteudoContainer}>
+
+                        
+
+                        <View style={{
+                            paddingHorizontal: 24, 
+                            width: '100%'}}>
+
+                            <Text style={styles.cabecalhoII}>
+                                Resultados...
+                            </Text>
 
                         </View>
 
@@ -276,7 +435,8 @@ export default function Atrativos(){
                         <FlatList
                         contentContainerStyle={{padding: 20,}}
                         data={data}
-                        showsVerticalScrollIndicator={false}
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
                         keyExtractor={item => item.id}
                         renderItem={renderItem}
                         ListEmptyComponent={() => (

@@ -5456,6 +5456,11 @@
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
 
+"react-native-css-vh-vw@^1.0.4":
+  "integrity" "sha512-pY0gIB1xc1xLp3VH6mji7zHfiOc7BpFFCtOTpMeyjfoQ4CacmcCD6vTZuM2ReuK+oXdWrbx7CquTHxl44aHcBA=="
+  "resolved" "https://registry.npmjs.org/react-native-css-vh-vw/-/react-native-css-vh-vw-1.0.5.tgz"
+  "version" "1.0.5"
+
 "react-native-gesture-handler@^1.10.3":
   "integrity" "sha512-cBGMi1IEsIVMgoox4RvMx7V2r6bNKw0uR1Mu1o7NbuHS6BRSVLq0dP34l2ecnPlC+jpWd3le6Yg1nrdCjby2Mw=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-1.10.3.tgz"
@@ -5485,6 +5490,13 @@
   "version" "3.5.1"
   dependencies:
     "prop-types" "^15.5.10"
+
+"react-native-slider-picker@^1.1.4":
+  "integrity" "sha512-ln5qfFh0TSzqTfRgRKrZddO+l45KNZ3MYibWApdm7rkstJsTUN/uVWjQgXuU5fBGdYtOfCvk6s5XcV0R/kA4+A=="
+  "resolved" "https://registry.npmjs.org/react-native-slider-picker/-/react-native-slider-picker-1.1.4.tgz"
+  "version" "1.1.4"
+  dependencies:
+    "react-native-css-vh-vw" "^1.0.4"
 
 "react-native-swiper@^1.6.0-rc.3":
   "integrity" "sha512-aZk6M7WsFdxlfHfS6OKb7gsaS3q7Z4Oqm8iTyJO7duE28EUK9kzfA2Cp5S6FdZkGXoWCXoUFGlzaO0lnhW/jtw=="

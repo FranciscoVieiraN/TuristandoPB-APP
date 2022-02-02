@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './style';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Swiper from 'react-native-swiper';
+import colors from '../../styles/colors';
 
 export default function Atrativo(){
 
     const navigation = useNavigation();
 
-    const route = useRoute();
+    const route = useRoute()
 
     function navigateGoBack(){
         navigation.goBack();
@@ -37,24 +39,20 @@ export default function Atrativo(){
                         source={{uri: imagem.url}}/>
                     ))}
                 </Swiper>
-
-                <TouchableOpacity
-                style={styles.topContainer} 
-                onPress={() => navigateGoBack()}>
-                    <Icon name="arrow-left" size={45} color='#0D47A1' />
-                </TouchableOpacity>
             </View>
-
 
                 <View style={styles.detalhesContainer}>               
                     <View>
                         <Text style={styles.nomeAtrativo}>
                             {atrativo.title}
                         </Text>
-
-                        <Text style={styles.enderecoAtrativo}>
-                            {atrativo.endereco}
-                        </Text>
+                        <View style={{ flexDirection: 'row', marginTop: 8, marginBottom: 20 }}>
+                            <Icon name='explore' color='#3EA7EF' size={25} style={{marginRight: 20}} />
+                            <Text style={styles.enderecoAtrativo}>
+                                {atrativo.endereco}
+                            </Text>
+                        </View>
+    
                     </View>
                     
                     <View style={styles.buttonsContainer}>
@@ -62,30 +60,32 @@ export default function Atrativo(){
                     <TouchableOpacity 
                     onPress={() => navigateToMap(atrativo)}
                     style={styles.verNoMapaButtom}>
-                    <Image source={{
-                        uri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.ibxk.com.br%2F2019%2F05%2F30%2F30151300199196.jpg&f=1&nofb=1' }} 
-                        style={{
-                            height: '100%', 
-                            width: 90, 
-                            borderTopLeftRadius: 10, 
-                            borderBottomLeftRadius: 10}}/>
+                    <View  
+                    style={{
+                        height: '100%', 
+                        width: 65, 
+                        borderRadius: 10,
+                        backgroundColor: '#F5F5F5',
+                        alignItems: 'center',
+                        justifyContent: 'center'}}>
+                            
+                            <Image source={require("../../../assets/icons/Maps-icon.png")}
+                                style={{resizeMode: "contain",width: 25, height: 25}} />
+                    </View>
 
                         <View style={{
                             flexDirection: "row",
                             alignItems: "center",
-                            justifyContent: "space-between"}}>
+                            justifyContent: "center"}}>
 
                             <Text style={{
                                 fontFamily: 'Roboto-Bold', 
-                                fontSize: 20, color: '#fff', 
+                                fontSize: 18, color: '#fff', 
                                 marginLeft: 20,
                                 marginRight: 20}}>
 
                                 Ver no mapa
                             </Text>
-
-                            <Icon name='enviroment' size={25} color={'#fff'}/>
-
 
 
                         </View>
@@ -115,10 +115,10 @@ export default function Atrativo(){
 
                 <View style={styles.informacoesContainer}>
                     <View style={styles.telefoneContainer}>
-                        <Text style={{
-                            marginHorizontal: 10, 
+                        <Text style={{ 
                             fontSize: 19, 
-                            fontWeight: "bold"}}>
+                            fontWeight: "bold",
+                            color: colors.main}}>
 
                             {atrativo.telefone}
                         </Text>
@@ -126,17 +126,17 @@ export default function Atrativo(){
 
 
                     <Text style={{fontSize: 19, marginBottom: 10}}>
-                        <Text style={{fontWeight: "bold"}}>
+                        <Text style={{fontWeight: "bold", color: colors.main}}>
                             Aberto:
                         </Text>
-                        <Text style={{color: 'black'}}>
+                        <Text style={{color: colors.main}}>
                            {atrativo.horarios}
                         </Text>
                         
 
                     </Text>
 
-                    <Text style={{fontSize: 19, marginBottom: 10}}>
+                    <Text style={{fontSize: 19, marginBottom: 10, color: colors.main}}>
 
                         <Text style={{fontWeight: "bold"}}>
                             Custo:
@@ -147,27 +147,12 @@ export default function Atrativo(){
                     
                     </Text>
 
-                    
-
 
                 </View>
-
-                
-
-
-
-
-
 
 
             </ScrollView>
 
         </View>
-
-
-
-
-
-
     );
 }

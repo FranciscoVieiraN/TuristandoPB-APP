@@ -18,12 +18,8 @@ export default function Home(){
         navigation.navigate('Atrativos')
     }
 
-    function navigationToTipoRoteiro(){
-        navigation.navigate('Tipo_roteiro')
-    }
-
     function navigationToRoteiroCidades(){
-        navigation.navigate('Roteiro_cidades')
+        navigation.navigate('Cidades')
     }
 
     function navigationToAtrativo(atrativo){
@@ -65,27 +61,9 @@ export default function Home(){
     return(
 
         <View style={styles.container}>
-            
 
-                {/* <View style={styles.topContainer}>
-                    <View style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginTop: 20,}}>
-                        
-                        <Image source={require("../../../assets/logos/logo-turistando.png")}
-                        style={{
-                            height: 40,
-                            width: 40,}}/>
-                        <Text style={styles.title}>
-                        TuristandoPB
-                        </Text>
-                    </View>
-                </View> */}
-
-                <View style={styles.tituloIIContainer}>
-                    <Text style={styles.tituloII}>Vamos turistar!</Text>
+                <View style={styles.tituloContainer}>
+                    <Text style={styles.titulo}>Vamos turistar!</Text>
 
                     <TouchableOpacity 
                         onPress={()=>navigationToAtrativos()}  

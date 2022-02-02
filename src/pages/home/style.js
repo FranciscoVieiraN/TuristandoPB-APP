@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import colors from "../../styles/colors";
+import fonts from "../../styles/fonts";
 
 export default StyleSheet.create({
 
@@ -7,27 +9,7 @@ export default StyleSheet.create({
         backgroundColor: '#fff'
     },
 
-    topContainer: {
-        padding: 20,
-        paddingHorizontal: 20,
-        marginBottom: 20,
-        width: '100%',
-        borderBottomLeftRadius: 7,
-        borderBottomRightRadius: 7,
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        backgroundColor: '#0D47A1',
-        elevation: 7
-    },
-
-    title: {
-        fontSize: 40,
-        fontFamily: 'Recursive-Black',
-        color: '#FFF',
-    },
-
-    tituloIIContainer:{
+    tituloContainer:{
         paddingHorizontal: 24,
         width: '100%',
         marginTop: 8,
@@ -37,10 +19,10 @@ export default StyleSheet.create({
 
     },
 
-    tituloII:{
+    titulo:{
         fontSize: 18,
-        fontFamily: 'Poppins-SemiBold',
-        color: '#1C4491',
+        fontFamily: fonts.first,
+        color: colors.main,
         marginBottom: 14,
     },
 
@@ -53,7 +35,7 @@ export default StyleSheet.create({
     },
 
     optionButtonContainer: {
-        backgroundColor: '#1C4491',
+        backgroundColor: colors.main,
         borderRadius: 10,
         padding: 7,
         paddingHorizontal: 20,
@@ -79,18 +61,18 @@ export default StyleSheet.create({
     cabecalhoII:{
   
         fontSize: 18,
-        fontFamily: 'Roboto-Bold',
+        fontFamily: fonts.first,
         width: '98%',
         textAlign: "left",
         marginBottom: 15,
-        color: '#1C4491'
+        color: colors.main
     },
 
     menuBar: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: '#1C4491',
+        backgroundColor: colors.main,
         height: 54,
         width: '100%'
     },

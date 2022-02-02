@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../styles/colors';
 
 export default StyleSheet.create({
 
@@ -52,15 +53,16 @@ export default StyleSheet.create({
     },
 
     nomeAtrativo:{
-        fontSize: 30,
+        fontSize: 28,
         fontFamily: 'Recursive-Black',
+        color: colors.main
     },
 
     enderecoAtrativo:{
         fontSize: 20,
         marginBottom: 10,
         fontFamily: 'Recursive-Black',
-        color: 'gray'
+        color: colors.main
     },
 
     buttonsContainer:{
@@ -70,9 +72,9 @@ export default StyleSheet.create({
 
     verNoMapaButtom:{
         borderRadius:10,
-        width: 290,
-        height: 50,
-        backgroundColor:'#1E90FF',
+        width: 232,
+        height: 45,
+        backgroundColor:colors.main,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -97,16 +99,15 @@ export default StyleSheet.create({
 
     cabecalho:{
         width: '100%',
-        color: '#455A64',
+        color: colors.main,
         marginBottom: 10,
-        fontSize: 25,
-        fontWeight: "bold",
+        fontSize: 20,
     },
     
     descricao:{
         textAlign: "justify",
         fontSize: 20,
-        color: 'gray',
+        color: colors.main,
         fontFamily: "Recursive-Medium",
     },
 
@@ -122,11 +123,5 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginBottom: 10,
     },
-
-
-
-
-    
-
 
 })

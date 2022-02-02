@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { View, Text, Image, TouchableOpacity, Route, ImageBackground } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Route, ImageBackground } from 'react-native';
 import { TextInput, FlatList } from 'react-native-gesture-handler';
 import styles from './style';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import  Icons  from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import SearchBar from 'react-native-search-bar'
+import { LittleCard } from '../../components/Little_Card';
+import colors from '../../styles/colors';
 
 
-const Item = ({ item, onPress}) => (
+/* const Item = ({ item, onPress}) => (
     <TouchableOpacity onPress={onPress} style={styles.buttomCidade}>
         <ImageBackground source={{uri: item.images[0].url}} style={styles.cidadeImg}
         imageStyle={{borderRadius: 10,}}>
@@ -17,7 +19,7 @@ const Item = ({ item, onPress}) => (
             </View>
         </ImageBackground>
     </TouchableOpacity>
-);
+); */
 
 export default function Roteiro_cidades(){
 
@@ -148,6 +150,19 @@ export default function Roteiro_cidades(){
             ]
         },
     ];
+
+   /*  const filterButton = (text) => {
+        let newData = [...arrayholder];
+
+        if (text.toLowerCase() === 'todos'){
+            newData = arrayholder;
+        } else if (text.toLowerCase() === 'atrativos naturais') {
+            newData = arrayholder.filter(item => (item.tipo.toLowerCase() == 'atrativos naturais'));
+        } else if (text.toLowerCase() == 'atrativos histórico/culturais') {
+            newData = arrayholder.filter(item => (item.tipo.toLowerCase() === 'atrativos histórico/culturais'));
+        }
+        setData(newData);
+    }; */
     
 
     const searchFilterFunction = text => {    
@@ -177,7 +192,7 @@ export default function Roteiro_cidades(){
 
     const renderItem = ({ item }) => {
         return (
-            <Item
+            <LittleCard
                 item={item}
                 onPress={() => navigateToCidade(item)}
 
@@ -197,8 +212,7 @@ export default function Roteiro_cidades(){
         <View style={styles.container}>
              <View style={styles.topContainer}>
 
-                <TouchableOpacity 
-                    onPress={()=>navigationToRoteiroCidades()}  
+                <View   
                     style={styles.optionButtonContainer}>
                         
                     <Text 
@@ -211,40 +225,116 @@ export default function Roteiro_cidades(){
                     </Text>
 
                     <Icons name='location-city' color={'white'} size={25}/>
-                </TouchableOpacity>
+                </View>
+                <View style={{
+                        backgroundColor: colors.main,
+                        borderRadius: 10,
+                        marginBottom: 10,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: '100%',
+                        height: 45,
+                        margin: 5}}>
+
+                            <SearchBar        
+                            placeholder="Para onde você quer ir?"
+                            textFieldBackgroundColor={colors.main}
+                            textColor={'white'}
+                            lightTheme
+                            round        
+                            onChangeText={text => searchFilterFunction(text)}
+                            autoCorrect={false}
+                            style={{width: '93%', height: 45}}
+                            />
+
+                    </View>
 
             </View>
 
-            <Text style={styles.titleII} >Sugestões...</Text>
+            <View style={{ marginTop: -15, marginHorizontal: 20,marginBottom: 5, width: '100%', alignItems: 'center'}}>
+                    <ScrollView 
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    style={{width: '90%', height: 50, backgroundColor: '#fff'}}>
+                        <TouchableOpacity
+                        onPress={() => filterButton('todos')} 
+                        style={{
+                            marginRight: 8,
+                            borderWidth: 2,
+                            borderColor: colors.main,
+                            borderRadius: 25,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flex: 1, 
+                            backgroundColor: '#fff'}}
+                            >
+                            <Text style={{fontSize: 18, fontWeight: '500', color: colors.main, margin: 8}}>
+                                Todos
+                            </Text>
+                        </TouchableOpacity>
 
-            <View style={{
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: '#1C4491',
-                    borderRadius: 10,
-                    marginBottom: 10,
-                    padding: 2,
-                    width: '90%',
-                    margin: 5}}>
+                        <TouchableOpacity 
+                        onPress={() => setModalVisible(true)}
+                        style={{
+                            marginRight: 8,
+                            borderWidth: 2,
+                            borderColor: colors.main,
+                            borderRadius: 25,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flex: 1, 
+                            backgroundColor: '#fff'}}
+                            >
+                            <Text style={{fontSize: 18, fontWeight: '500', color: colors.main, margin: 8}}>
+                                Perto de...
+                            </Text>
+                        </TouchableOpacity>
 
-                <SearchBar        
-                placeholder="Para onde você quer ir?"
-                textColor={'white'}
-                lightTheme        
-                round        
-                onChangeText={text => searchFilterFunction(text)}
-                autoCorrect={false}
-                style={{width: '100%', height: 45, borderRadius: 10}}
-                />
-            </View>
+                        <TouchableOpacity 
+                        onPress={() => filterButton('atrativos naturais')}
+                        style={{
+                            marginRight: 8,
+                            borderWidth: 2,
+                            borderColor: colors.main,
+                            borderRadius: 25,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flex: 1, 
+                            backgroundColor: '#fff'}}
+                            >
+                            <Text style={{fontSize: 18, fontWeight: '500', color: colors.main, margin: 8}}>
+                                Atrativos naturais
+                            </Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity 
+                        onPress={() => filterButton('atrativos histórico/culturais')}
+                        style={{
+                            marginRight: 8,
+                            borderWidth: 2,
+                            borderColor: colors.main,
+                            borderRadius: 25,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flex: 1, 
+                            backgroundColor: '#fff'}}
+                            >
+                            <Text style={{fontSize: 18, fontWeight: '500', color: colors.main, margin: 8}}>
+                                Atrativos histórico/culturais
+                            </Text>
+                        </TouchableOpacity>
+                    </ScrollView>
+                </View>
+
+            <Text style={styles.titleII} >Resultados...</Text>
 
             <View style={styles.buttonsContainer}>
                 
 
             <FlatList contentContainerStyle={styles.opcoesCidadeContainer}
                         data={data}
-                        Vertical
-                        showsVerticalScrollIndicator={false}
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
                         keyExtractor={item => item.id}
                         renderItem={renderItem}
                         ListEmptyComponent={() => (
@@ -252,7 +342,7 @@ export default function Roteiro_cidades(){
                                 Nenhuma cidade encontrada
                             </Text>
                         )}
-                        numColumns={2}
+                        ItemSeparatorComponent={listSeparetor}
                 />
 
             </View>

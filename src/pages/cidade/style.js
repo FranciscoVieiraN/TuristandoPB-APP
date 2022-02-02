@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
+import colors from '../../styles/colors';
 
 export default StyleSheet.create({
 
@@ -62,13 +63,14 @@ export default StyleSheet.create({
     nomeCidade:{
         fontSize: 25,
         fontFamily: 'Recursive-Black',
+        color: colors.main
     },
 
     enderecoCidade:{
         fontSize: 20,
         marginBottom: 10,
         fontFamily: 'Recursive-Black',
-        color: 'gray'
+        color: colors.main
     },
 
     buttonsNavigationContainer:{
@@ -108,7 +110,7 @@ export default StyleSheet.create({
 
     cabecalho:{
         width: '100%',
-        color: '#455A64',
+        color: colors.main,
         marginBottom: 10,
         fontSize: 25,
         fontWeight: "bold",
@@ -116,7 +118,7 @@ export default StyleSheet.create({
 
     cabecalhoII:{
         width: '96%',
-        color: '#455A64',
+        color: colors.main,
         marginBottom: 10,
         fontSize: 25,
         fontWeight: "bold",
@@ -125,7 +127,7 @@ export default StyleSheet.create({
     descricao:{
         textAlign: "justify",
         fontSize: 20,
-        color: 'gray',
+        color: colors.main,
         fontFamily: "Recursive-Medium",
     },
 

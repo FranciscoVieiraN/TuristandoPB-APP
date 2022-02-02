@@ -4,26 +4,19 @@ import  Icons  from 'react-native-vector-icons/MaterialIcons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import colors from './styles/colors';
 
 const Tab = createBottomTabNavigator();
 
 import Inicial from './pages/inicial';
 import Home from './pages/home';
-import Roteiro_cidades from './pages/roteiro_cidades';
+import Cidades from './pages/cidades';
 import Atrativos from './pages/atrativos';
 import Cidade from './pages/cidade';
 import Atrativo from './pages/atrativo';
+import Search from './pages/search';
+import QuemSomos from './pages/quem-somos';
 
-const InicialStack = createNativeStackNavigator();
-
-function InicialStackScreen() {
-  return (
-    <InicialStack.Navigator screenOptions={{ headerShown: false }}>
-      <InicialStack.Screen name="Inicial" component={Inicial} />
-    </InicialStack.Navigator>
-  );
-};
 
 const HomeStack = createNativeStackNavigator();
 
@@ -31,9 +24,10 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator screenOptions = {{headerShown:false}}>
       <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Atrativo" component={Atrativo} />
     </HomeStack.Navigator>
   );
-};
+}
 
 const AtrativoStack = createNativeStackNavigator();
 
@@ -44,78 +38,119 @@ function AtrativoStackScreen() {
         <AtrativoStack.Screen name="Atrativo" component={Atrativo} />
       </AtrativoStack.Navigator>
     );
-};
+}
 
 const CidadeStack = createNativeStackNavigator();
 
 function CidadeStackScreen() {
   return (
     <CidadeStack.Navigator screenOptions = {{headerShown:false}}>
-      <CidadeStack.Screen name="Roteiro_cidades" component={Roteiro_cidades} />
+      <CidadeStack.Screen name="Cidades" component={Cidades} />
       <CidadeStack.Screen name="Cidade" component={Cidade} />
     </CidadeStack.Navigator>
   );
-};
+}
 
 
-export default function Pages() {
+function TabBar() {
     return (
-      <NavigationContainer>
         <Tab.Navigator 
-          screenOptions = {{
-            headerShown:false,
-            tabBarShowLabel: false,
-            tabBarStyle: [{
-              positoin: 'absolute',
-              backgroundColor: '#1C4491',
-              height: 54}]}}
-          >
+      screenOptions = {{
+        headerShown:false,
+        tabBarShowLabel: false,
+        tabBarStyle: [{
+          positoin: 'absolute',
+          borderRadius: 24,
+          backgroundColor: colors.main,
+          height: 54,
+        margin: 8}]}}
+    >
           <Tab.Screen name="HomeTab" component={HomeStackScreen} 
-            options={{
-              tabBarIcon: ({focused}) => (
-                  <View style={{backgroundColor: focused ? '#fff' : '#1C4491',
-                  borderRadius:8,
-                  width:45,
-                  height:35,
-                  alignItems:'center',
-                  justifyContent:'center'
-                  }}>
-                      <Icons name='sensor-door' color={focused ? '#1C4491' : '#fff'} size={25}/>
-                  </View> 
-                )
+          options={{
+            tabBarIcon: ({focused}) => (
+                <View style={{backgroundColor: focused ? '#fff' : colors.main,
+                borderRadius:12,
+                width:45,
+                height:35,
+                alignItems:'center',
+                justifyContent:'center'
+                }}>
+                    <Icons name='home-filled' color={focused ? colors.main : '#fff'} size={25}/>
+                </View> 
+              )
             }}
           />
           <Tab.Screen name="AtrativosTab" component={AtrativoStackScreen} 
             options={{
               tabBarIcon: ({focused}) => (
-                  <View style={{backgroundColor: focused ? '#fff' : '#1C4491',
-                  borderRadius:8,
+                  <View style={{backgroundColor: focused ? '#fff' : colors.main,
+                  borderRadius:12,
                   width:45,
                   height:35,
                   alignItems:'center',
                   justifyContent:'center'
                   }}>
-                      <Icons name='beach-access' color={focused ? '#1C4491' : '#fff'} size={25}/>
+                      <Icons name='beach-access' color={focused ? colors.main : '#fff'} size={25}/>
                   </View> 
                 )
             }}
           />
-          <Tab.Screen name="Roteiro_cidadesTab" component={CidadeStackScreen} 
+          <Tab.Screen name="CidadesTab" component={CidadeStackScreen} 
             options={{
               tabBarIcon: ({focused}) => (
-                  <View style={{backgroundColor: focused ? '#fff' : '#1C4491',
-                  borderRadius:8,
+                  <View style={{backgroundColor: focused ? '#fff' : colors.main,
+                  borderRadius:12,
                   width:45,
                   height:35,
                   alignItems:'center',
                   justifyContent:'center'
                   }}>
-                      <Icons name='location-city' color={focused ? '#1C4491' : '#fff'} size={25}/>
+                      <Icons name='location-city' color={focused ? colors.main : '#fff'} size={25}/>
                   </View> 
                 )
             }}
           />
-        </Tab.Navigator>
-      </NavigationContainer>
+          <Tab.Screen name="Search" component={Search} 
+            options={{
+              tabBarIcon: ({focused}) => (
+                  <View style={{backgroundColor: focused ? '#fff' : colors.main,
+                  borderRadius:12,
+                  width:45,
+                  height:35,
+                  alignItems:'center',
+                  justifyContent:'center'
+                  }}>
+                      <Icons name='search' color={focused ? colors.main : '#fff'} size={25}/>
+                  </View> 
+                )
+            }}
+          />
+          <Tab.Screen name="QuemSomos" component={QuemSomos} 
+            options={{
+              tabBarIcon: ({focused}) => (
+                  <View style={{backgroundColor: focused ? '#fff' : colors.main,
+                  borderRadius:12,
+                  width:45,
+                  height:35,
+                  alignItems:'center',
+                  justifyContent:'center'
+                  }}>
+                      <Icons name='info-outline' color={focused ? colors.main : '#fff'} size={25}/>
+                  </View> 
+                )
+            }}
+          />
+      </Tab.Navigator>
     );
-};
+}
+
+export default function MainStackScreen() {
+  return (
+    <NavigationContainer>
+      <HomeStack.Navigator screenOptions = {{headerShown:false}}>
+      <HomeStack.Screen name="Inicial" component={Inicial} />
+      <HomeStack.Screen name="Home" component={TabBar} />
+    </HomeStack.Navigator>
+    </NavigationContainer>
+  );
+}
