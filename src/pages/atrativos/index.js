@@ -9,7 +9,8 @@ import {
     FlatList, 
     Dimensions,
     Modal,
-    Alert} from 'react-native';
+    Alert,
+    Platform} from 'react-native';
 import styles from './style';
 import  Icons  from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native'
@@ -19,6 +20,7 @@ import { LittleCard } from '../../components/Little_Card';
 import { FilterButton } from '../../components/Filter_Button';
 import { SliderPicker } from 'react-native-slider-picker';
 
+import Autocomplete from 'react-native-autocomplete-input';
 
 
 
@@ -40,6 +42,9 @@ export default function Atrativos(){
     };
 
     const [modalVisible, setModalVisible] = React.useState(false);
+    const [query, setQuery] = React.useState('');
+    const [filteredAtrativos, setFilteresAtrativos] = React.useState([]);
+    const placeholder = 'Perto do atrativo...';
     const [distancia, setDistancia] = React.useState(500);
     const [filter, setFilter] = React.useState('todos');  
     const [loading ,setLoading] = React.useState(false);
@@ -230,7 +235,8 @@ export default function Atrativos(){
             return itemData.indexOf(textData) > -1;    
         });
         
-        setData(newData);  
+        setData(newData);
+        setFilteresAtrativos(newData);  
       };
 
       const listSeparetor = () => {
@@ -304,7 +310,32 @@ export default function Atrativos(){
                                 alignItems: "center",
                                 width: '95%'
                                 }}>
-                                <Text>AAAAAAAAAAAAAAAAAAAAAA</Text>
+                                <View style={styles.autocompleteContainer}>
+                                    <Autocomplete
+                                    //editable={!isLoading}
+                                    autoCorrect={false}
+                                    data={filteredAtrativos}
+                                    defaultValue={query}
+                                    onChangeText={(text) => searchFilterFunction(text)}
+                                    placeholder={placeholder}
+                                    style={{backgroundColor: '#3EA7EF', height:45,width:250, marginLeft: 25}}
+                                    placeholderTextColor={'#FFF'}
+                                    containerStyle={{backgroundColor: '#ffffff', borderWidth:0}}
+                                    inputContainerStyle={{backgroundColor: '#3EA7EF', borderRadius:10}}
+                                    flatListProps={{
+                                        keyExtractor: item => item.id,
+                                        renderItem: ({item}) => (
+                                        <TouchableOpacity 
+                                            onPress={() => {
+                                            setQuery(item.title);
+                                            setFilteresAtrativos([])}}>
+                                            <Text style={styles.itemText}>{item.title}</Text>
+                                        </TouchableOpacity>
+                                        ),
+                                    }}
+                                    />
+                                </View>
+                                
                                 <SliderPicker 
                                 minLabel={'0 KM'}
                                 midLabel={'500 KM'}
@@ -319,6 +350,11 @@ export default function Atrativos(){
                                 buttonBorderColor={"#3EA7EF"}
                                 buttonDimensionsPercentage={3}
                                 />
+                                <View style={{width: '115%',alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', marginBottom: 15 }}>
+                                    <Text>0KM</Text>
+                                    <Text>500KM</Text>
+                                    <Text>1000KM</Text>
+                                </View>
                                 <TouchableOpacity
                                     style={{
                                         backgroundColor: colors.main, 
@@ -362,7 +398,7 @@ export default function Atrativos(){
                         </TouchableOpacity>
 
                         <TouchableOpacity 
-                        onPress={() => setModalVisible(true)}
+                        onPress={() => setModalVisible(!modalVisible)}
                         style={{
                             marginRight: 8,
                             borderWidth: 2,

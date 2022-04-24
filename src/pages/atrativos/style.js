@@ -129,5 +129,49 @@ export default StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 10,
         width: '100%',
-    }
-})
+    },
+    autoContainer: {
+        position: 'relative',
+        backgroundColor: '#F5FCFF',
+        flex: 1,
+    
+        // Android requiers padding to avoid overlapping
+        // with content and autocomplete
+        paddingTop: 50,
+    
+        // Make space for the default top bar
+        ...Platform.select({
+          web: {
+            marginTop: 0,
+          },
+          default: {
+            marginTop: 25,
+          },
+        }),
+      },
+      itemText: {
+        fontSize: 15,
+        margin: 2,
+      },
+      descriptionContainer: {
+        // `backgroundColor` needs to be set otherwise the
+        // autocomplete input will disappear on text input.
+        backgroundColor: '#F5FCFF',
+        marginTop: 8,
+      },
+      infoText: {
+        textAlign: 'center',
+      },
+      autocompleteContainer: {
+        // Hack required to make the autocomplete
+        // work on Andrdoid
+        flex: 1,
+        left: 0,
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        zIndex: 1,
+        padding: 5,
+        marginBottom: 30
+      }
+});

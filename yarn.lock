@@ -5447,6 +5447,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
+"react-native-autocomplete-input@^5.0.2":
+  "integrity" "sha512-CL20a5Rg/jsiuavlG6cm8MRFyH1nICXFrvtlVMrJ3IKUa6AW/Ge4QqCFa7AjZKzEus1uDeMzcHC+bOhcgSudUQ=="
+  "resolved" "https://registry.npmjs.org/react-native-autocomplete-input/-/react-native-autocomplete-input-5.0.2.tgz"
+  "version" "5.0.2"
+
 "react-native-codegen@^0.0.7":
   "integrity" "sha512-dwNgR8zJ3ALr480QnAmpTiqvFo+rDtq6V5oCggKhYFlRjzOmVSFn3YD41u8ltvKS5G2nQ8gCs2vReFFnRGLYng=="
   "resolved" "https://registry.npmjs.org/react-native-codegen/-/react-native-codegen-0.0.7.tgz"

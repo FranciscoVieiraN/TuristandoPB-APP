@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Route, ImageBackground } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Route, Modal } from 'react-native';
 import { TextInput, FlatList } from 'react-native-gesture-handler';
 import styles from './style';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,6 +9,8 @@ import SearchBar from 'react-native-search-bar'
 import { LittleCard } from '../../components/Little_Card';
 import colors from '../../styles/colors';
 
+import { SliderPicker } from 'react-native-slider-picker';
+import Autocomplete from 'react-native-autocomplete-input';
 
 /* const Item = ({ item, onPress}) => (
     <TouchableOpacity onPress={onPress} style={styles.buttomCidade}>
@@ -26,6 +28,8 @@ export default function Roteiro_cidades(){
     const navigation = useNavigation();
     const route = useRoute();
     //const idItem = route.params.id;
+    const [modalVisible, setModalVisible] = React.useState(false);
+    const [distancia, setDistancia] = React.useState(500);
     const [data, setData] = React.useState([{
         id: "1",
         title: "João Pessoa",
@@ -250,6 +254,59 @@ export default function Roteiro_cidades(){
                     </View>
 
             </View>
+
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => setModalVisible(!modalVisible)}
+            >
+                <View 
+                    style={{
+                        flex: 1, 
+                        justifyContent: "center", 
+                        alignItems: "center", 
+                        backgroundColor: 'rgba(0,0,0,0.6)'}}
+                >
+                    <View style={{
+                        margin: 20,
+                        backgroundColor: "white",
+                        borderRadius: 20,
+                        padding: 35,
+                        alignItems: "center",
+                        width: '95%'
+                    }}>
+                        <Text>AAAAAAAAAAAAAAAAAAAAAA</Text>
+                        <SliderPicker 
+                        minLabel={'0 KM'}
+                        midLabel={'500 KM'}
+                        maxLabel={'1000 KM'}
+                        maxValue={500}
+                        defaultValue={distancia}
+                        showFill={true}
+                        callback={position => setDistancia(position)}
+                        labelFontSize={15}
+                        fillColor={'#3EA7EF'}
+                        buttonBackgroundColor={'#3EA7EF'}
+                        buttonBorderColor={"#3EA7EF"}
+                        buttonDimensionsPercentage={3}
+                        />
+                        <TouchableOpacity
+                            style={{
+                                backgroundColor: colors.main, 
+                                borderRadius: 20, 
+                                width: "60%", 
+                                alignItems: "center", 
+                                justifyContent: "center"}}
+                            onPress={() => setModalVisible(false)}
+                        >
+                            <Text style={{margin: 8, color: "white", fontSize: 18, fontWeight: "400"}}>Filtrar</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                </View>
+
+            </Modal>
 
             <View style={{ marginTop: -15, marginHorizontal: 20,marginBottom: 5, width: '100%', alignItems: 'center'}}>
                     <ScrollView 
